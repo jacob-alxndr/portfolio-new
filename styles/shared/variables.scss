@@ -1,0 +1,78 @@
+@use "./mixins.scss";
+
+$easing: cubic-bezier(0.46, 1, 0.1, 1);
+$overlayContentOpacity: 0.4;
+
+// Wire
+$component-padding-x: (
+  "desktop-xlg": 34.6666666667%,
+  "desktop-lg": 22.6666666667%,
+  "desktop": 10.6666666667%,
+  "tablet": 8.6666666667%,
+  "mobile": mixins.rem(24),
+);
+
+$component-padding-y: (
+  "xxs": mixins.rem(40),
+  "xs": mixins.rem(60),
+  "sm": mixins.rem(80),
+  "md": mixins.rem(160),
+  "lg": mixins.rem(180),
+  "xl": mixins.rem(200),
+  "xxl": mixins.rem(220),
+);
+
+$typography-size: (
+  "extra-display": 126,
+  "display": 80,
+  "h1": 72,
+  "h2": 48,
+  "h3": 40,
+  "h4": 32,
+  "h5": 24,
+  "h6": 20,
+  "h7": 18,
+  "h8": 16,
+);
+
+$typography-line-height: (
+  "extra-display": 132,
+  "display": 76,
+  "h1": 74,
+  "h2": 66,
+  "h3": 56,
+  "h4": 46,
+  "h5": 40,
+  "h6": 30,
+  "h7": 23,
+  "h8": 20,
+);
+
+$typography-letter-spacing: (
+  "extra-display": 0,
+  "display": -30,
+  "h1": 0,
+  "h2": 0,
+  "h3": 0,
+  "h4": 0,
+  "h5": 0,
+  "h6": 0,
+  "h7": 0,
+);
+
+$border-radius: (
+  "xxxs": mixins.rem(8),
+  "xxs": mixins.rem(16),
+  "xs": mixins.rem(20),
+  "sm": mixins.rem(24),
+  "md": mixins.rem(48),
+  "lg": mixins.rem(500),
+);
+
+$component-heading-maxwidth: (
+  "sm": mixins.rem(420),
+  "md": mixins.rem(640),
+  "lg": mixins.rem(820),
+  "xl": mixins.rem(1120),
+  "xxl": mixins.rem(1500),
+);

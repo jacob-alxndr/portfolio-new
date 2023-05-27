@@ -1,0 +1,8 @@
+@use "/styles/shared/global";
+
+.badge {
+  color: global.$color-primary-400;
+  background-color: global.$color-primary-500;
+  padding: global.rem(4) global.rem(12);
+  border-radius: map_get(global.$border-radius, "sm");
+}

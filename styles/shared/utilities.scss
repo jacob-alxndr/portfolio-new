@@ -1,0 +1,245 @@
+@use './variables';
+@use './mixins';
+
+$padding--xxs: map_get(variables.$component-padding-y, 'xxs');
+$padding--xs: map_get(variables.$component-padding-y, 'xs');
+$padding--sm: map_get(variables.$component-padding-y, 'sm');
+$padding--md: map_get(variables.$component-padding-y, 'md');
+$padding--lg: map_get(variables.$component-padding-y, 'lg');
+$padding--xl: map_get(variables.$component-padding-y, 'xl');
+$padding--xxl: map_get(variables.$component-padding-y, 'xxl');
+
+.u-vertical-padding--xxs {
+  padding-top: $padding--xxs;
+  padding-bottom: $padding--xxs;
+}
+
+.u-vertical-padding--xs {
+  padding-top: $padding--xs;
+  padding-bottom: $padding--xs;
+}
+
+.u-vertical-padding--small {
+  padding-top: $padding--sm;
+  padding-bottom: $padding--sm;
+}
+
+.u-vertical-padding--medium {
+  padding-top: $padding--md;
+  padding-bottom: $padding--md;
+}
+
+.u-vertical-padding--large {
+  padding-top: $padding--lg;
+  padding-bottom: $padding--lg;
+}
+
+.u-vertical-padding--none {
+  $padding: 0;
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+/* 
+  Top - Desktop
+  -----------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+.u-vertical-padding--top-none {
+  @include mixins.mq('phablet') {
+    padding-top: 0;
+  }
+}
+
+.u-vertical-padding--top-xxs {
+  padding-top: $padding--xxs;
+
+  @include mixins.mq('tablet') {
+    padding-top: calc($padding--xxs / 2);
+  }
+}
+
+.u-vertical-padding--top-xs {
+  padding-top: $padding--xs;
+
+  @include mixins.mq('tablet') {
+    padding-top: calc($padding--xs / 2);
+  }
+}
+
+.u-vertical-padding--top-small {
+  padding-top: $padding--sm;
+
+  @include mixins.mq('tablet') {
+    padding-top: calc($padding--sm / 2);
+  }
+}
+
+.u-vertical-padding--top-medium {
+  padding-top: $padding--md;
+
+  @include mixins.mq('tablet') {
+    padding-top: calc($padding--md / 2);
+  }
+}
+
+.u-vertical-padding--top-large {
+  padding-top: $padding--lg;
+
+  @include mixins.mq('tablet') {
+    padding-top: calc($padding--lg / 2);
+  }
+}
+
+.u-vertical-padding--top-xl {
+  padding-top: $padding--xl;
+
+  @include mixins.mq('tablet') {
+    padding-top: calc($padding--xl/ 2);
+  }
+}
+
+.u-vertical-padding--top-xxl {
+  padding-top: $padding--xxl;
+
+  @include mixins.mq('tablet') {
+    padding-top: calc($padding--xxl/ 2);
+  }
+}
+
+/* 
+  Top - Mobile
+  -----------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+.u-vertical-padding--top-small-mobile {
+  @include mixins.mq('phablet') {
+    padding-top: $padding--sm;
+  }
+}
+
+.u-vertical-padding--top-medium-mobile {
+  @include mixins.mq('phablet') {
+    padding-top: $padding--md;
+  }
+}
+
+.u-vertical-padding--top-large-mobile {
+  @include mixins.mq('phablet') {
+    padding-top: $padding--lg;
+  }
+}
+
+.u-vertical-padding--top-xl-mobile {
+  @include mixins.mq('phablet') {
+    padding-top: $padding--xl;
+  }
+}
+
+.u-vertical-padding--top-xxl-mobile {
+  @include mixins.mq('phablet') {
+    padding-top: $padding--xxl;
+  }
+}
+
+/* 
+  Bottom - Desktop
+  -----------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+.u-vertical-padding--bottom-xxs {
+  padding-bottom: $padding--xxs;
+
+  @include mixins.mq('tablet') {
+    padding-bottom: calc($padding--xxs / 2);
+  }
+}
+
+.u-vertical-padding--bottom-xs {
+  padding-bottom: $padding--xs;
+
+  @include mixins.mq('tablet') {
+    padding-bottom: calc($padding--xs / 2);
+  }
+}
+
+.u-vertical-padding--bottom-small {
+  padding-bottom: $padding--sm;
+
+  @include mixins.mq('tablet') {
+    padding-bottom: calc($padding--sm / 2);
+  }
+}
+
+.u-vertical-padding--bottom-medium {
+  padding-bottom: $padding--md;
+
+  @include mixins.mq('tablet') {
+    padding-bottom: calc($padding--md / 2);
+  }
+}
+
+.u-vertical-padding--bottom-large {
+  padding-bottom: $padding--lg;
+
+  @include mixins.mq('tablet') {
+    padding-bottom: calc($padding--lg / 2);
+  }
+}
+
+.u-vertical-padding--bottom-xl {
+  padding-bottom: $padding--xl;
+
+  @include mixins.mq('tablet') {
+    padding-bottom: calc($padding--xl / 2);
+  }
+}
+
+.u-vertical-padding--bottom-xxl {
+  padding-bottom: $padding--xxl;
+
+  @include mixins.mq('tablet') {
+    padding-bottom: calc($padding--xxl / 2);
+  }
+}
+
+/* 
+  Bottom - Mobile
+  -----------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+.u-vertical-padding--bottom-none-mobile {
+  @include mixins.mq('phablet') {
+    padding-bottom: 0;
+  }
+}
+
+.u-vertical-padding--bottom-small-mobile {
+  @include mixins.mq('phablet') {
+    padding-bottom: $padding--sm;
+  }
+}
+
+.u-vertical-padding--bottom-medium-mobile {
+  @include mixins.mq('phablet') {
+    padding-bottom: $padding--md;
+  }
+}
+
+.u-vertical-padding--bottom-large-mobile {
+  @include mixins.mq('phablet') {
+    padding-bottom: $padding--lg;
+  }
+}
+
+.u-vertical-padding--bottom-xl-mobile {
+  @include mixins.mq('phablet') {
+    padding-bottom: $padding--xl;
+  }
+}
+
+.u-vertical-padding--bottom-xxl-mobile {
+  @include mixins.mq('phablet') {
+    padding-bottom: $padding--xxl;
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "next-dato",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "eslint": "8.40.0",
+    "eslint-config-next": "13.4.1",
+    "got": "^12.6.0",
+    "graphql": "^16.6.0",
+    "graphql-request": "^6.0.0",
+    "mobile-detect": "^1.4.5",
+    "next": "13.4.1",
+    "react": "18.2.0",
+    "react-datocms": "^4.0.15",
+    "react-dom": "18.2.0",
+    "react-markdown": "^8.0.7",
+    "zustand": "^4.3.8"
+  },
+  "devDependencies": {
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2"
+  }
+}

@@ -1,0 +1,181 @@
+@use "./shared/global";
+
+:root {
+  --clip: 0;
+}
+
+html,
+body {
+  height: auto;
+  margin: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  padding: 0;
+  scroll-behavior: smooth;
+  background: global.$color-black; 
+  color: global.$color-white;
+  @include global.fontSize(16, 24);
+  @include global.font-primaryN4;
+
+  ::selection {
+    background: global.$color-primary-400; /* WebKit/Blink Browsers */
+    color: global.$color-white; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: global.$color-black; /* Gecko Browsers */
+    color: global.$color-white; /* Gecko Browsers */
+  }
+}
+
+html {
+  overflow-x: hidden;
+}
+
+audio {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  color: global.$color-black;
+  @include global.font-primaryN4;
+  @extend %body--large;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+.transition-container {
+  z-index: global.$zIndex-7--transition;
+
+  &.is-loading {
+    background: global.$color-primary-400;
+  }
+}
+
+.transition-container,
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+  @include global.size(100%);
+
+  pointer-events: none;
+
+  &.experience {
+    pointer-events: all;
+  }
+
+  &.transition {
+    z-index: global.$zIndex-7--transition;
+  }
+}
+
+// SVG Icons
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend %u-heading;
+  margin: 0;
+}
+
+.u-heading--extra-display {
+  @extend %u-heading-extra-display;
+  @include global.fontSize(
+    map_get(global.$typography-size, "extra-display"),
+    map_get(global.$typography-line-height, "extra-display"),
+    map_get(global.$typography-letter-spacing, "extra-display")
+  );
+}
+
+.u-heading--display {
+  @extend %u-heading-display;
+}
+
+.u-heading--h1,
+h1 {
+  @extend %u-heading-h1;
+}
+
+.u-heading--h2,
+h2 {
+  @extend %u-heading-h2;
+}
+
+.u-heading--h3,
+h3 {
+  @extend %u-heading-h3;
+}
+
+.u-heading--h4,
+h4 {
+  @extend %u-heading-h4;
+}
+
+.u-heading--h5,
+h5 {
+  @extend %u-heading-h5;
+}
+
+.u-heading--h6,
+h6 {
+  @extend %u-heading-h6;
+}
+
+// Text Heading Content Width Sizes
+.u-heading-width--small {
+  @extend %u-heading-width-small;
+}
+.u-heading-width--medium {
+  @extend %u-heading-width-medium;
+}
+.u-heading-width--large {
+  @extend %u-heading-width-large;
+}
+.u-heading-width--extra-large {
+  @extend %u-heading-width-xl;
+}
+.u-heading-width--extra-extra-large {
+  @extend %u-heading-width-xxl;
+}

@@ -1,0 +1,337 @@
+@use 'sass:math';
+
+@mixin remType($type, $size, $base-size: 100) {
+  @if $type == 'size' {
+    font-size: $size + px;
+    font-size: math.div(math.div($size, $base-size) * 100, 16) + rem;
+  }
+  @if $type == 'lineHeight' {
+    line-height: $size + px;
+    line-height: math.div(math.div($size, $base-size) * 100, 16) + rem;
+  }
+  @if $type == 'letterSpacing' {
+    letter-spacing: math.div($size, 1000) + px;
+    letter-spacing: math.div($size, 1000) + 0em;
+  }
+  @if $type == 'textIndent' {
+    text-indent: math.div($size, 1000) + px;
+    text-indent: math.div($size, 1000) + 0rem;
+  }
+}
+
+@function rem($size, $base-size: 100) {
+  @return math.div(math.div($size, $base-size) * 100, 16) + rem;
+}
+
+@mixin remRetina($type, $size, $base-size: 100) {
+  $pointsTopixel: math.div(((math.div($size, 72)) * 96), 2);
+
+  @if $type == 'size' {
+    font-size: $pointsTopixel + px;
+    font-size: (math.div(math.div($pointsTopixel, $base-size) * 100, 16)) + rem;
+  }
+  @if $type == 'lineHeight' {
+    line-height: $pointsTopixel + px;
+    line-height: (math.div(math.div($pointsTopixel, $base-size) * 100, 16)) +
+      rem;
+  }
+}
+
+@mixin fontSize(
+  $fontSizePts: 12,
+  $leadingPts: auto,
+  $tracking: 0,
+  $retina: false
+) {
+  @if ($retina == true) {
+    @include remRetina('size', $fontSizePts);
+    @include remRetina('lineHeight', $leadingPts);
+    @include remType('letterSpacing', $tracking);
+  }
+  @if ($retina == false) {
+    @include remType('size', $fontSizePts);
+    @include remType('lineHeight', $leadingPts);
+    @include remType('letterSpacing', $tracking);
+  }
+}
+
+$breakpoints: (
+  'phone': 375px,
+  'phone-wide': 480px,
+  'phablet': 560px,
+  'tablet-small': 640px,
+  'tablet': 768px,
+  'tablet-medium': 940px,
+  'tablet-wide': 1024px,
+  'desktop': 1248px,
+  'desktop-medium': 1366px,
+  'desktop-wide': 1440px,
+);
+
+@mixin mq($width, $type: 'max') {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+  }
+
+  @if $type == 'max' {
+    @media only screen and (max-width: $width) {
+      @content;
+    }
+  }
+
+  @if $type == 'min' {
+    @media only screen and (min-width: ($width + 1px)) {
+      @content;
+    }
+  }
+}
+
+$component-heading-size: (
+  'sm': 420px,
+  'md': 640px,
+);
+
+@function headingWidth($size) {
+  @return map_get($component-heading-size, $size);
+}
+
+@mixin mq-height($height, $type: 'max') {
+  @if $type == 'max' {
+    @media only screen and (max-height: $height) {
+      @content;
+    }
+  }
+
+  @if $type == 'min' {
+    @media only screen and (min-height: ($height + 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-moz-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3 / 2),
+    only screen and (min-device-pixel-ratio: 1.5),
+    only screen and (min-resolution: 1.5dppx) {
+    @content;
+  }
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    content: '';
+    float: left;
+    padding-bottom: (math.div($height, $width)) * 100%;
+  }
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      line-height: $min-font-size;
+
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            (calc((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}))
+        );
+        line-height: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            (calc((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}))
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+        line-height: $max-font-size;
+      }
+    }
+  }
+}
+
+@mixin fluid-type-height(
+  $min-vh,
+  $max-vh,
+  $min-font-size,
+  $max-font-size,
+  $min-line-height,
+  $max-line-height
+) {
+  $u1: unit($min-vh);
+  $u2: unit($max-vh);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      line-height: $min-line-height;
+
+      @media screen and (min-height: $min-vh) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            (math.div((100vh - #{$min-vh}), #{strip-unit($max-vh - $min-vh)}))
+        );
+        line-height: calc(
+          #{$min-line-height} + #{strip-unit(
+              $max-line-height - $min-line-height
+            )} *
+            (math.div((100vh - #{$min-vh}), #{strip-unit($max-vh - $min-vh)}))
+        );
+      }
+      @media screen and (min-height: $max-vh) {
+        font-size: $max-font-size;
+        line-height: $max-line-height;
+      }
+    }
+  }
+}
+
+/*
+    Triangles follow same nomenclature as: http://apps.eky.hk/css-triangle-generator/;
+========================================================================== */
+@mixin triangle(
+  $direction: left,
+  $color: $color-black,
+  $width: 6px,
+  $height: 12px
+) {
+  @include size(0, 0);
+  border-style: solid;
+  @if $direction == 'bottom' {
+    $width: math.div($width, 2);
+    border-width: $height $width 0 $width;
+    border-color: $color transparent transparent transparent;
+  }
+  @if $direction == 'bottom-right' {
+    border-width: 0 0 $height $width;
+    border-color: transparent transparent $color transparent;
+  }
+  @if $direction == 'bottom-left' {
+    border-width: $height 0 0 $width;
+    border-color: transparent transparent transparent $color;
+  }
+  @if $direction == 'left' {
+    $height: math.div($height, 2);
+    border-width: $height $width $height 0;
+    border-color: transparent $color transparent transparent;
+  }
+  @if $direction == 'left-inverse' {
+    $height: math.div($height, 2);
+    border-width: $height $width $height 0;
+    border-color: $color transparent $color transparent;
+  }
+  @if $direction == 'right' {
+    $height: math.div($height, 2);
+    border-width: $height 0 $height $width;
+    border-color: transparent transparent transparent $color;
+  }
+  @if $direction == 'right-inverse' {
+    $height: math.div($height, 2);
+    border-width: $height 0 $height $width;
+    border-color: $color transparent $color transparent;
+  }
+  @if $direction == 'top' {
+    $height: math.div($height, 2);
+    border-width: 0 $height $width $height;
+    border-color: transparent transparent $color transparent;
+  }
+  @if $direction == 'top-left' {
+    border-width: $height $width 0 0;
+    border-color: $color transparent transparent transparent;
+  }
+  @if $direction == 'top-right' {
+    border-width: $height 0 0 $width;
+    border-color: $color transparent transparent transparent;
+  }
+  @if $direction == 'bottom-inverse' {
+    $height: math.div($height, 2);
+    border-width: 0 $height $width $height;
+    border-color: transparent $color transparent $color;
+  }
+}
+
+// ROTATE KEYFRAMES ANIMATION
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes rotate {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+// PULSE BLOB KEYFRAMES ANIMATION
+@keyframes pulse-primary-blob {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 200, 57, 0.35);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 200, 57, 0.2);
+  }
+
+  70% {
+    transform: scale(4);
+    opacity: 0;
+    box-shadow: 0 0 0 10px rgba(255, 200, 57, 0);
+  }
+
+  // 100% {
+  //   transform: scale(0.95);
+  //   box-shadow: 0 0 0 0 rgba(255, 177, 57, 0);
+  // }
+}
+
+// ANIMATION MIXIN
+@mixin animate($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
+}
+// KEYFRAMES MIXIN
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}

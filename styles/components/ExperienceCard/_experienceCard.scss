@@ -1,0 +1,54 @@
+@use "/styles/shared/global";
+
+.card {
+  background-color: global.$color-black;
+  overflow: hidden;
+  transition: background-color 0.3s global.$easing, opacity 0.2s global.$easing;
+  border-radius: map_get(global.$border-radius, "xxxs");
+  .image {
+    max-width: global.rem(320);
+    border-radius: map_get(global.$border-radius, "xxxs");
+    margin: global.rem(16) global.rem(16) global.rem(0);
+    overflow: hidden;
+  }
+
+  .content {
+    padding: global.rem(16);
+
+    .eyebrow,
+    .title,
+    .subtitle {
+      @include global.fontSize(18, 24);
+      display: block;
+    }
+    .eyebrow {
+      color: global.$color-eyebrow;
+    }
+    .title {
+      font-weight: 700;
+      color: global.$color-title;
+    }
+    .subtitle {
+      color: global.$color-title;
+      margin-bottom: global.rem(16);
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: global.rem(8);
+    }
+  }
+
+  body:not(.is-touch) & {
+    &:hover {
+      background-color: global.$color-primary-700;
+      // transform: translateY(-10px);
+      // :global(.c-button--primary) {
+      //   // background-color: global.$color-black;
+      //   border: 1px solid global.$color-black;
+      //   color: global.$color-black;
+      // }
+    }
+  }
+}

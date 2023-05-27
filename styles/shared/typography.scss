@@ -1,0 +1,209 @@
+@use "./mixins.scss";
+@use "./colors.scss";
+@use "./variables.scss";
+
+@mixin font-rendering {
+  /*-webkit-backface-visibility: hidden;*/
+  /*text-rendering: optimizeLegibility; Causing weird line break issues in Windows Chrome*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$font-primary: var(--font-primary), "IBM Plex Sans", "ibm plex sans";
+$font-secondary: var(--font-secondary), "IBM Plex Mono", "ibm plex mono";
+
+/* Font Family Mixins
+     - (N = normal | I = italic | 4 = normal font-weight | 7 = bold font-weight)
+========================================================================== */
+@mixin font-primaryN3 {
+  font-family: $font-primary;
+
+  font-weight: 300;
+  @include font-rendering;
+}
+@mixin font-primaryN4 {
+  font-family: $font-primary;
+
+  font-weight: 400;
+  @include font-rendering;
+}
+
+// @mixin font-primaryN6 {
+//   font-family: $font-primary;
+
+//   font-weight: 600;
+//   @include font-rendering;
+// }
+
+@mixin font-secondaryN3 {
+  font-family: $font-secondary;
+  font-weight: 300;
+  @include font-rendering;
+}
+@mixin font-secondaryN4 {
+  font-family: $font-secondary;
+  font-weight: 400;
+
+  @include font-rendering;
+}
+
+@mixin font-headingN4 {
+  font-family: $font-primary;
+
+  @include font-rendering;
+}
+
+@mixin font-headingN6 {
+  font-family: $font-primary;
+
+  @include font-rendering;
+}
+
+@mixin font-headingN8 {
+  font-family: $font-primary;
+
+  @include font-rendering;
+}
+
+/* 
+  Body Scale
+  --------------------------------------------------
+*/
+%body--tiny {
+  @include mixins.fontSize(12, 18);
+  font-family: $font-secondary;
+}
+
+%body--small {
+  @include mixins.fontSize(14, 20, -20);
+  font-family: $font-secondary;
+}
+
+%body--regular {
+  @include mixins.fontSize(16, 24, -20);
+  font-family: $font-primary;
+}
+
+%body--large {
+  @include mixins.fontSize(18, 28, -20);
+  font-family: $font-primary;
+}
+
+%eyebrow {
+  text-transform: uppercase;
+  @include font-primaryN4;
+  @include mixins.fontSize(14, 18, 200);
+}
+
+%eyebrow--small {
+  text-transform: uppercase;
+  @include mixins.fontSize(12, 24);
+}
+
+/* 
+  Heading Scale
+  --------------------------------------------------
+*/
+%u-heading {
+  // color: colors.$color-secondary-400;
+  @include font-headingN4;
+}
+
+%u-heading-extra-display {
+  @include mixins.fontSize(
+    map_get(variables.$typography-size, "extra-display"),
+    map_get(variables.$typography-line-height, "extra-display"),
+    map_get(variables.$typography-letter-spacing, "extra-display")
+  );
+  @include mixins.mq("tablet") {
+    @include mixins.fontSize(map_get(variables.$typography-size, "h1"), 100);
+  }
+}
+
+%u-heading-display {
+  @include mixins.fontSize(
+    map_get(variables.$typography-size, "display"),
+    map_get(variables.$typography-line-height, "display"),
+    map_get(variables.$typography-letter-spacing, "display")
+  );
+  @include mixins.mq("tablet") {
+    @include mixins.fontSize(map_get(variables.$typography-size, "h3"), 42);
+  }
+}
+%u-heading-h1 {
+  @include mixins.fontSize(
+    map_get(variables.$typography-size, "h1"),
+    map_get(variables.$typography-line-height, "h1"),
+    map_get(variables.$typography-letter-spacing, "h1")
+  );
+
+  @include mixins.mq("tablet") {
+    @include mixins.fontSize(
+      map_get(variables.$typography-size, "h3"),
+      map_get(variables.$typography-line-height, "h3")
+    );
+  }
+}
+
+%u-heading-h2 {
+  @include mixins.fontSize(
+    map_get(variables.$typography-size, "h2"),
+    map_get(variables.$typography-line-height, "h2")
+  );
+
+  @include mixins.mq("tablet") {
+    @include mixins.fontSize(
+      map_get(variables.$typography-size, "h2"),
+      map_get(variables.$typography-line-height, "h2")
+    );
+  }
+}
+
+%u-heading-h3 {
+  @include mixins.fontSize(
+    map_get(variables.$typography-size, "h3"),
+    map_get(variables.$typography-line-height, "h3")
+  );
+
+  @include mixins.mq("tablet") {
+    @include mixins.fontSize(
+      map_get(variables.$typography-size, "h4"),
+      map_get(variables.$typography-line-height, "h4")
+    );
+  }
+}
+
+%u-heading-h4 {
+  @include mixins.fontSize(
+    map_get(variables.$typography-size, "h4"),
+    map_get(variables.$typography-line-height, "h4")
+  );
+}
+
+%u-heading-h5 {
+  @include mixins.fontSize(
+    map_get(variables.$typography-size, "h5"),
+    map_get(variables.$typography-line-height, "h5")
+  );
+
+  @include mixins.mq("tablet") {
+    @include mixins.fontSize(
+      map_get(variables.$typography-size, "h6"),
+      map_get(variables.$typography-line-height, "h6")
+    );
+  }
+}
+
+%u-heading-h6 {
+  @include mixins.fontSize(
+    map_get(variables.$typography-size, "h6"),
+    map_get(variables.$typography-line-height, "h6")
+  );
+}
+
+%u-heading-h7 {
+  @include mixins.fontSize(
+    map_get(variables.$typography-size, "h7"),
+    map_get(variables.$typography-line-height, "h7")
+  );
+}

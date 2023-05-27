@@ -1,0 +1,49 @@
+@use "/styles/shared/global";
+
+.card {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+  background-color: global.$color-grey-10;
+  overflow: hidden;
+  transition: transform 0.3s global.$easing, opacity 0.2s global.$easing;
+
+  body:not(.is-touch) & {
+    &:hover {
+      transform: translateY(-10px);
+      img {
+        opacity: 1;
+        transform: scale(1.02);
+      }
+      :global(.c-button--primary) {
+        // background-color: global.$color-black;
+        border: 1px solid global.$color-black;
+        color: global.$color-black;
+      }
+    }
+
+    .content {
+      padding: 1rem 2rem 2rem;
+      .title {
+        @include global.font-secondaryN4;
+        @include global.fontSize(18, 24);
+      }
+      .subtitle {
+        @extend %body--tiny;
+        display: block;
+        margin-bottom: global.rem(16);
+      }
+    }
+    .media {
+      position: relative;
+      width: 100%;
+      // height: 4rem;
+      overflow: hidden;
+      padding: 2px;
+      img {
+        object-fit: cover;
+        width: 100%;
+        transition: transform 0.3s global.$easing;
+        opacity: 0.9;
+      }
+    }
+  }
+}

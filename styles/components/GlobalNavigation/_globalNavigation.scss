@@ -1,0 +1,28 @@
+@use "/styles/shared/global";
+
+.header {
+  padding-top: global.rem(32);
+  padding-bottom: global.rem(32);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: global.$zIndex-4--nav;
+
+  @include global.mq("table") {
+    padding-top: global.rem(16);
+    padding-bottom: global.rem(16);
+  }
+}
+.nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  justify-content: flex-end;
+  &Content {
+    display: flex;
+    a {
+      @include global.fontSize(14, 20);
+    }
+  }
+}

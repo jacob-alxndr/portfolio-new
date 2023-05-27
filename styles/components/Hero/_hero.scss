@@ -1,0 +1,112 @@
+@use "/styles/shared/global";
+
+.container {
+  // background: var(--backgroundHero);
+  // background-size: var(--backgroundSizeHero);
+  // background-size: 60%;
+
+  // Temp
+
+  display: flex;
+  min-height: 50vh;
+  margin-bottom: 0rem;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.mask,
+.scroll {
+  z-index: 1;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  // max-width: global.rem(1100);
+  .title{
+    font-weight: 700;
+    color: global.$color-title;
+  }
+  .title,
+  .description {
+    text-align: left;
+  }
+  .description {
+    max-width:23rem;
+    p {
+      @include global.fontSize(18, 24);
+      color: global.$color-paragraph;
+      font-weight: 100;
+      margin: 0;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: global.rem(980);
+  position: relative;
+  text-align: center;
+  z-index: 1;
+
+  @include global.mq("phablet") {
+    padding-left: map_get(global.$component-padding-x, "mobile");
+    padding-right: map_get(global.$component-padding-x, "mobile");
+  }
+
+  :global(body.is-touch) & {
+    opacity: 1 !important;
+  }
+
+  // .title:not(:first-of-type) {
+  //   & > *:not(:first-child) {
+  //     margin-top: global.rem(-16);
+  //   }
+  // }
+}
+
+.scroll {
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.cover {
+  display: none;
+  background: global.$color-grey-10;
+  // clip-path: circle(20% at 50% 50%);
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: 0.9s global.$easing;
+  @include global.size(100%);
+
+  .cover_image {
+    // background: var(--backgroundHero);
+    //background-size: var(--backgroundSizeHero);
+    // transform: scale(0.9);
+    transition: 1s global.$easing;
+    @include global.size(100%);
+  }
+
+  &:hover {
+    clip-path: circle(100% at 50% 50%);
+    // transform: skew(0deg, 0);
+
+    .cover_image {
+      transform: scale(1);
+    }
+  }
+}
+
+.background {
+  background-position: center center;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  @include global.size(100%);
+}

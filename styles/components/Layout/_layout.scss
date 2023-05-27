@@ -1,0 +1,56 @@
+@use "/styles/shared/global";
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  padding-bottom: global.rem(64);
+}
+
+.description {
+  p {
+    @include global.fontSize(18, 24);
+    color: global.$color-paragraph;
+    font-weight: 100;
+    margin: 0;
+  }
+}
+
+.header {
+  width: 100%;
+  .content {
+    position: fixed;
+    top: global.rem(96);
+  }
+  .title,
+  .description {
+    text-align: left;
+  }
+  .title {
+    font-weight: 700;
+    color: global.$color-title;
+  }
+
+  .description {
+    max-width: 23rem;
+    p {
+      @include global.fontSize(18, 24);
+      color: global.$color-paragraph;
+      font-weight: 100;
+      margin: 0;
+    }
+  }
+}
+
+.column {
+  margin-top: global.rem(112);
+  .description {
+    margin-bottom: global.rem(96);
+    padding: 0rem 1rem 0rem;
+  }
+  .lists {
+    & > *:not(:last-child) {
+      margin-bottom: global.rem(88);
+    }
+  }
+}

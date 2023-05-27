@@ -1,0 +1,26 @@
+@use "/styles/shared/global";
+.header {
+  padding: global.rem(16) global.rem(16) global.rem(0);
+  .title {
+    @include global.fontSize(24, 30);
+    display: block;
+    color: global.$color-title;
+    font-weight: 700;
+    margin-bottom: global.rem(14);
+  }
+  .description {
+    max-width: 27rem;
+    p {
+      @include global.fontSize(18, 24);
+      color: global.$color-paragraph;
+      font-weight: 100;
+      margin: 0;
+    }
+  }
+}
+
+.experienceList {
+  display: flex;
+  flex-direction: column;
+  row-gap: global.rem(16);
+}

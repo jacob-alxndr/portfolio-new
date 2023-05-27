@@ -1,0 +1,67 @@
+@use './variables';
+@use './mixins';
+
+/* Padding X */
+.padding-x-sm {
+  padding-left: map_get(variables.$component-padding-x, 'tablet');
+  padding-right: map_get(variables.$component-padding-x, 'tablet');
+
+  @include mixins.mq('tablet') {
+    padding-left: map_get(variables.$component-padding-x, 'mobile');
+    padding-right: map_get(variables.$component-padding-x, 'mobile');
+  }
+}
+.padding-x-md {
+  padding-left: map_get(variables.$component-padding-x, 'desktop');
+  padding-right: map_get(variables.$component-padding-x, 'desktop');
+
+  @include mixins.mq('tablet') {
+    padding-left: map_get(variables.$component-padding-x, 'mobile');
+    padding-right: map_get(variables.$component-padding-x, 'mobile');
+  }
+}
+.padding-x-lg {
+  padding-left: map_get(variables.$component-padding-x, 'desktop-lg');
+  padding-right: map_get(variables.$component-padding-x, 'desktop-lg');
+
+  @include mixins.mq('desktop-wide') {
+    padding-left: map_get(variables.$component-padding-x, 'desktop');
+    padding-right: map_get(variables.$component-padding-x, 'desktop');
+  }
+  @include mixins.mq('tablet') {
+    padding-left: map_get(variables.$component-padding-x, 'mobile');
+    padding-right: map_get(variables.$component-padding-x, 'mobile');
+  }
+}
+
+// Text Heading Content Width Sizes
+%u-heading-width-small {
+  max-width: map_get(variables.$component-heading-maxwidth, 'sm');
+  width: 100%;
+  @include mixins.mq('tablet') {
+  }
+}
+%u-heading-width-medium {
+  max-width: map_get(variables.$component-heading-maxwidth, 'md');
+  width: 100%;
+  @include mixins.mq('tablet') {
+  }
+}
+%u-heading-width-large {
+  max-width: map_get(variables.$component-heading-maxwidth, 'lg');
+  width: 100%;
+  @include mixins.mq('tablet') {
+  }
+}
+%u-heading-width-xl {
+  max-width: map_get(variables.$component-heading-maxwidth, 'xl');
+  width: 100%;
+  @include mixins.mq('tablet') {
+  }
+}
+%u-heading-width-xxl {
+  max-width: map_get(variables.$component-heading-maxwidth, 'xxl');
+  width: 100%;
+  @include mixins.mq('tablet') {
+  }
+}
