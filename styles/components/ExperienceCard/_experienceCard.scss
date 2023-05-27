@@ -43,7 +43,7 @@
     }
   }
 
-  body:not(.is-touch) & {
+  body:not(:global(.is-touch)) & {
     &:hover {
       cursor: pointer;
       background-color: global.$color-primary-700;
