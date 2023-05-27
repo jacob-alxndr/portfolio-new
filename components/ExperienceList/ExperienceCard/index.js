@@ -19,7 +19,7 @@ export default function ExperienceCard({ data }) {
       {/* <Link href={title.includes("www") ? `https://${title}` : null}> */}
 
       <ConditionalWrapper
-        condition={title.includes("www")}
+        condition={title.includes(".com") || title.includes(".app")}
         wrapper={(children) => (
           <a target="_blank" href={`https://${title}`}>
             {children}
