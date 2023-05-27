@@ -153,8 +153,8 @@ $font-secondary: var(--font-secondary), "IBM Plex Mono", "ibm plex mono";
 
   @include mixins.mq("tablet") {
     @include mixins.fontSize(
-      map_get(variables.$typography-size, "h2"),
-      map_get(variables.$typography-line-height, "h2")
+      map_get(variables.$typography-size, "h3"),
+      map_get(variables.$typography-line-height, "h3")
     );
   }
 }
