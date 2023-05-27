@@ -3,6 +3,7 @@ import ImageFields from "operations/imports/media/image";
 const ExperienceListFields = `
   experience {
     id
+    tagId
     title
     description
     experienceItems {

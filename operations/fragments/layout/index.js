@@ -1,4 +1,6 @@
 import ExperienceListFields from "../experienceList";
+import ExternalButtonFields from "../../imports/buttons/external";
+
 const LayoutFields = `
 fragment LayoutFields on LayoutRecord {
     eyebrow
@@ -7,6 +9,11 @@ fragment LayoutFields on LayoutRecord {
         blocks
         links
         value
+      }
+      links {
+        ... on ExternalButtonRecord {
+          ${ExternalButtonFields}  
+        }
       }
     bio
     ${ExperienceListFields}

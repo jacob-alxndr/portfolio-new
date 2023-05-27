@@ -6,22 +6,20 @@
 @use "./extends";
 
 %base {
-  @include mixins.fontSize(10, 12);
-  @include typography.font-secondaryN3;
+  @include mixins.fontSize(16, 20);
+  @include typography.font-secondaryN4;
   cursor: pointer;
-  // border-radius: map_get(variables.$border-radius, 'sm');
   display: inline-flex;
   transition: 0.5s variables.$easing;
   white-space: nowrap;
-  padding: mixins.rem(8) mixins.rem(12);
-  text-transform: uppercase;
+
 }
 
 // Primary
 .c-button--primary {
   @extend %base;
   border: 1px solid transparent;
-  color: colors.$color-grey-50;
+  color: colors.$color-primary-400;
 }
 
 // Secondary

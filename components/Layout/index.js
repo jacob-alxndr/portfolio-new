@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 import { StructuredText } from "react-datocms";
 import ExperienceList from "@components/ExperienceList";
 import Markdown from "@components/Markdown";
+
+import Button from "@components/Button";
 const Layout = (props) => {
   const [data, setData] = useState(props);
-  const { eyebrow, title, description, bio, titleSize, experience } = data;
-
-  // console.log("experience", experience);
+  const { eyebrow, title, description, bio, titleSize, experience, links } =
+    data;
 
   return (
     <div className={classNames(styles.container, "padding-x-lg")}>
@@ -20,6 +21,19 @@ const Layout = (props) => {
           </div>
           <div className={styles.description}>
             <StructuredText data={description} />
+          </div>
+          <div className={styles.links}>
+            {links.map((link, i) => (
+              <Button
+                key={i}
+                data={link}
+                attr={{ ["data-text"]: link?.buttonText }}
+                // All default style links should not have animation or special styling
+                {...(link?.buttonStyle === "default" && {
+                  clean: true,
+                })}
+              />
+            ))}
           </div>
         </div>
       </div>

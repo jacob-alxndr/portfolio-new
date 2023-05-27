@@ -5,6 +5,10 @@
   grid-template-columns: 1fr 1fr;
   width: 100%;
   padding-bottom: global.rem(64);
+  scroll-behavior: smooth;
+  @include global.mq("tablet-medium") {
+    grid-template-columns: 1fr;
+  }
 }
 
 .description {
@@ -14,6 +18,7 @@
     font-weight: 100;
     margin: 0;
   }
+
 }
 
 .header {
@@ -21,6 +26,15 @@
   .content {
     position: fixed;
     top: global.rem(96);
+
+  @include global.mq("tablet-medium") {
+    padding: 0rem 1rem 0rem;
+    position: relative;
+    margin-bottom: global.rem(32);
+    .description {
+      max-width: 100%;}
+
+  }
   }
   .title,
   .description {
@@ -28,17 +42,26 @@
   }
   .title {
     font-weight: 700;
-    color: global.$color-title;
+    color:  global.$color-white;
   }
 
   .description {
     max-width: 23rem;
     p {
       @include global.fontSize(18, 24);
-      color: global.$color-paragraph;
+      color: global.$color-white;
       font-weight: 100;
       margin: 0;
     }
+  }
+  .links{
+
+    display: flex;
+    flex-direction: column;
+    margin-top: global.rem(24);
+    row-gap: global.rem(16);
+    width: 100%;
+
   }
 }
 

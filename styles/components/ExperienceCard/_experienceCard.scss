@@ -10,6 +10,9 @@
     border-radius: map_get(global.$border-radius, "xxxs");
     margin: global.rem(16) global.rem(16) global.rem(0);
     overflow: hidden;
+    @include global.mq("tablet-medium") {
+      max-width: 100%;
+    }
   }
 
   .content {
@@ -42,6 +45,7 @@
 
   body:not(.is-touch) & {
     &:hover {
+      cursor: pointer;
       background-color: global.$color-primary-700;
       // transform: translateY(-10px);
       // :global(.c-button--primary) {

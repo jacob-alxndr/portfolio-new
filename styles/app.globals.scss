@@ -20,7 +20,7 @@ body {
 
   ::selection {
     background: global.$color-primary-400; /* WebKit/Blink Browsers */
-    color: global.$color-white; /* WebKit/Blink Browsers */
+    color: global.$color-black; /* WebKit/Blink Browsers */
   }
   ::-moz-selection {
     background: global.$color-black; /* Gecko Browsers */

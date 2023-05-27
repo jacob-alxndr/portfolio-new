@@ -6,6 +6,9 @@
   z-index: global.$zIndex-4--footer;
   @include global.size(100%, auto);
   padding-bottom: global.rem(48);
+  @include global.mq("tablet-medium") {
+    position: relative;
+}
 
   @include global.mq("tablet") {
     padding-bottom: global.rem(24);
