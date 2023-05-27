@@ -15,7 +15,6 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     if (isTouch) {
       document.body.classList.add("is-touch");
-      setSound(false);
     } else {
       document.body.classList.remove("is-touch");
     }
