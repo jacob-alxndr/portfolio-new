@@ -14,9 +14,7 @@
     padding-bottom: global.rem(24);
   }
 
-  @include global.mq("phablet") {
-    background: global.$color-white; // Hide orb on homepage mobile
-  }
+
 }
 .content {
   margin: 0 auto;
