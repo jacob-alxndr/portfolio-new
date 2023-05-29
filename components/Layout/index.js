@@ -14,23 +14,23 @@ const Layout = (props) => {
   const { eyebrow, title, description, bio, titleSize, experience, links } =
     data;
   const tl = gsap.timeline();
-  useEffect(() => {
-    const titleEl = elementRef.current;
-    // tl.formTo(titleEl, {
-    //   y: "100px",
-    //   ease: "Power4.easeInOut",
-    //   duration: 1.5,
-    // });
-    let ctx = gsap.context(() => {
-      tl.fromTo(
-        titleEl,
-        { autoAlpha: 0, y: 0 },
-        { autoAlpha: 1, y: 0, duration: 1 }
-      );
-      console.log("titleEl", titleEl);
-    });
-    return () => ctx.revert(); // <- cleanup!
-  }, []);
+  // useEffect(() => {
+  //   const titleEl = elementRef.current;
+  //   // tl.formTo(titleEl, {
+  //   //   y: "100px",
+  //   //   ease: "Power4.easeInOut",
+  //   //   duration: 1.5,
+  //   // });
+  //   let ctx = gsap.context(() => {
+  //     tl.fromTo(
+  //       titleEl,
+  //       { autoAlpha: 0, y: 0 },
+  //       { autoAlpha: 1, y: 0, duration: 1 }
+  //     );
+  //     console.log("titleEl", titleEl);
+  //   });
+  //   return () => ctx.revert(); // <- cleanup!
+  // }, []);
 
   return (
     <div className={classNames(styles.container, "padding-x-lg")}>
