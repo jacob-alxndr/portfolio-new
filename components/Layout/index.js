@@ -1,22 +1,45 @@
 import classNames from "classnames";
 import styles from "@styles/Layout/index.module.scss";
 import mapping from "./mapping";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StructuredText } from "react-datocms";
 import ExperienceList from "@components/ExperienceList";
 import Markdown from "@components/Markdown";
+import { gsap } from "gsap";
 
 import Button from "@components/Button";
 const Layout = (props) => {
   const [data, setData] = useState(props);
+  const elementRef = useRef(null);
   const { eyebrow, title, description, bio, titleSize, experience, links } =
     data;
+  const tl = gsap.timeline();
+  useEffect(() => {
+    const titleEl = elementRef.current;
+    // tl.formTo(titleEl, {
+    //   y: "100px",
+    //   ease: "Power4.easeInOut",
+    //   duration: 1.5,
+    // });
+    let ctx = gsap.context(() => {
+      tl.fromTo(
+        titleEl,
+        { autoAlpha: 0, y: 0 },
+        { autoAlpha: 1, y: 0, duration: 1 }
+      );
+      console.log("titleEl", titleEl);
+    });
+    return () => ctx.revert(); // <- cleanup!
+  }, []);
 
   return (
     <div className={classNames(styles.container, "padding-x-lg")}>
       <div className={classNames(styles.header)}>
         <div className={styles.content}>
-          <div className={classNames(styles.title, `u-heading--${titleSize}`)}>
+          <div
+            className={classNames(styles.title, `u-heading--${titleSize}`)}
+            ref={elementRef}
+          >
             {title}
           </div>
           <div className={styles.description}>

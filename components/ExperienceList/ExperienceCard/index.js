@@ -22,6 +22,7 @@ export default function ExperienceCard({ data }) {
         condition={
           title.includes(".com") ||
           title.includes(".app") ||
+          title.includes(".org") ||
           title.includes(".photo") ||
           title.includes(".la")
         }
