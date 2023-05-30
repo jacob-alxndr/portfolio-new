@@ -38,9 +38,9 @@ export default function ExperienceCard({ data }) {
               alt={title}
               // lazyLoad={false}
               // fadeInDuration={1000}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="50% 50%"
+              // layout="fill"
+              // objectFit="cover"
+              // objectPosition="50% 50%"
               data={image?.image?.responsiveImage}
             />
           </div>

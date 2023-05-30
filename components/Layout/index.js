@@ -6,14 +6,17 @@ import { StructuredText } from "react-datocms";
 import ExperienceList from "@components/ExperienceList";
 import Markdown from "@components/Utilities/Markdown";
 import { gsap } from "gsap";
-
+import { useStore } from "@lib/store";
 import Button from "@components/Utilities/Button";
 const Layout = (props) => {
   const [data, setData] = useState(props);
   const elementRef = useRef(null);
+  const listRef = useRef();
   const { eyebrow, title, description, bio, titleSize, experience, links } =
     data;
   const tl = gsap.timeline();
+  const lenis = useStore(({ lenis }) => lenis);
+  const listNodes = useStore(({ listNodes }) => listNodes);
   // useEffect(() => {
   //   const titleEl = elementRef.current;
   //   // tl.formTo(titleEl, {
@@ -40,7 +43,7 @@ const Layout = (props) => {
             className={classNames(styles.title, `u-heading--${titleSize}`)}
             ref={elementRef}
           >
-            {title + " STAGING 101"}
+            {title}
           </div>
           <div className={styles.description}>
             <StructuredText data={description} />
@@ -51,6 +54,10 @@ const Layout = (props) => {
                 key={i}
                 data={link}
                 attr={{ ["data-text"]: link?.buttonText }}
+                onClick={() => {
+                  const list = listRef.current.children;
+                  lenis.scrollTo(list[i]);
+                }}
                 // All default style links should not have animation or special styling
                 {...(link?.buttonStyle === "default" && {
                   clean: true,
@@ -65,12 +72,12 @@ const Layout = (props) => {
         <div className={styles.description}>
           <Markdown>{bio}</Markdown>
         </div>
-        <div className={styles.lists}>
+        <div className={styles.lists} ref={listRef}>
           {experience &&
-            experience.map((item) => {
+            experience.map((item, i) => {
               const { id } = item;
-              console.log("id", item);
-              return <ExperienceList key={id} data={item} />;
+
+              return <ExperienceList key={id} data={item} ref={listRef} />;
             })}
         </div>
       </div>

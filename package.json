@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@studio-freight/hamo": "^0.6.16",
+    "@studio-freight/lenis": "^1.0.13",
     "classnames": "^2.3.2",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",

@@ -8,8 +8,6 @@
   .image {
     position: relative;
     max-width: global.rem(320);
-    height: global.rem(192);
-    width: 100%;
     border-radius: map_get(global.$border-radius, "xxxs");
     margin: global.rem(16) global.rem(16) global.rem(0);
     overflow: hidden;

@@ -12,8 +12,8 @@ body {
   overflow-x: hidden;
   overscroll-behavior: none;
   padding: 0;
-  scroll-behavior: smooth;
-  background: global.$color-black; 
+  // scroll-behavior: smooth;
+  background: global.$color-black;
   color: global.$color-white;
   @include global.fontSize(16, 24);
   @include global.font-primaryN4;
