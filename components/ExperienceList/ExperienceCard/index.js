@@ -34,7 +34,13 @@ export default function ExperienceCard({ data }) {
       >
         {image?.image?.responsiveImage && (
           <div className={styles.image}>
-            <Image alt={title} data={image?.image?.responsiveImage} />
+            <Image
+              alt={title}
+              // lazyLoad={false}
+              // fadeInDuration={1000}
+
+              data={image?.image?.responsiveImage}
+            />
           </div>
         )}
 

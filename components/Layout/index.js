@@ -4,7 +4,7 @@ import mapping from "./mapping";
 import { useEffect, useRef, useState } from "react";
 import { StructuredText } from "react-datocms";
 import ExperienceList from "@components/ExperienceList";
-import Markdown from "@components/Markdown";
+import Markdown from "@components/Utilities/Markdown";
 import { gsap } from "gsap";
 
 import Button from "@components/Button";
