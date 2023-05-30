@@ -3,13 +3,23 @@
 .card {
   background-color: global.$color-black;
   overflow: hidden;
-  transition: background-color 0.3s global.$easing, opacity 0.2s global.$easing;
+  transition: background-color 0.3s global.$easing;
   border-radius: map_get(global.$border-radius, "xxxs");
   .image {
+    position: relative;
     max-width: global.rem(320);
+    height: global.rem(192);
+    width: 100%;
     border-radius: map_get(global.$border-radius, "xxxs");
     margin: global.rem(16) global.rem(16) global.rem(0);
     overflow: hidden;
+    div img {
+      transition: transform 1s ease !important;
+    }
+    div picture img {
+      transition: opacity 0.5s global.$easing, transform 1s global.$easing !important ;
+    }
+
     @include global.mq("tablet-medium") {
       max-width: 100%;
     }
@@ -40,6 +50,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: global.rem(8);
+      width: 100%;
     }
   }
 
@@ -47,6 +58,11 @@
     &:hover {
       cursor: pointer;
       background-color: global.$color-primary-700;
+
+      .image img {
+        transform: scale(1.05);
+      }
+
       // transform: translateY(-10px);
       // :global(.c-button--primary) {
       //   // background-color: global.$color-black;

@@ -1,6 +1,6 @@
 import styles from "@styles/ExperienceCard/index.module.scss";
 import classNames from "classnames";
-import Badge from "@components/Badge";
+import Badge from "@components/Utilities/Badge";
 import { Image } from "react-datocms";
 import Link from "next/link";
 export default function ExperienceCard({ data }) {
@@ -38,7 +38,9 @@ export default function ExperienceCard({ data }) {
               alt={title}
               // lazyLoad={false}
               // fadeInDuration={1000}
-
+              layout="fill"
+              objectFit="cover"
+              objectPosition="50% 50%"
               data={image?.image?.responsiveImage}
             />
           </div>

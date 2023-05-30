@@ -19,10 +19,6 @@ const components = {
     comp: dynamic(() => import("@components/Layout")),
     mapping: require(`@components/Layout/mapping`),
   },
-  card_list: {
-    comp: dynamic(() => import("@components/CardList")),
-    mapping: require(`@components/CardList/mapping`),
-  },
   global_footer: {
     comp: dynamic(() => import("../components/Global/GlobalFooter")),
     mapping: require("../components/Global/GlobalFooter/mapping"),

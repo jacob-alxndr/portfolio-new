@@ -7,7 +7,7 @@ import ExperienceList from "@components/ExperienceList";
 import Markdown from "@components/Utilities/Markdown";
 import { gsap } from "gsap";
 
-import Button from "@components/Button";
+import Button from "@components/Utilities/Button";
 const Layout = (props) => {
   const [data, setData] = useState(props);
   const elementRef = useRef(null);
@@ -40,7 +40,7 @@ const Layout = (props) => {
             className={classNames(styles.title, `u-heading--${titleSize}`)}
             ref={elementRef}
           >
-            {title}
+            {title + " STAGING"}
           </div>
           <div className={styles.description}>
             <StructuredText data={description} />

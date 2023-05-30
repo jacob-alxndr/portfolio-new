@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import Button from "../../Button";
+import Button from "../../Utilities/Button";
 import styles from "@styles/GlobalNavigation/index.module.scss";
 import classNames from "classnames";
 import { useRouter } from "next/router";

@@ -47,7 +47,7 @@
 // };
 
 // export default mapping;
-import getButtons from "../Button/mapping";
+import getButtons from "../Utilities/Button/mapping";
 
 const getCardButtons = (cards) => {
   const cardsWithButtons = cards.map((c) => {

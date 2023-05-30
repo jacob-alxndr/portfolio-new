@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "@styles/GlobalFooter/index.module.scss";
 import classNames from "classnames";
-import { renderButtons } from "@components/Button/utils";
-import Button from "@components/Button";
+import { renderButtons } from "@components/Utilities/Button/utils";
+import Button from "@components/Utilities/Button";
 import { useStore } from "@lib/store";
 const GlobalFooter = (props) => {
   const { primaryColumns } = props;

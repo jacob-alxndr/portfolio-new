@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "@styles/CardPreview/index.module.scss";
 import classNames from "classnames";
-import { renderButtons } from "@components/Button/utils";
+import { renderButtons } from "@components/Utilities/Button/utils";
 export default function CardPreview({ data }) {
   return (
     <div>
