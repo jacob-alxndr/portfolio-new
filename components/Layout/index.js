@@ -40,7 +40,7 @@ const Layout = (props) => {
             className={classNames(styles.title, `u-heading--${titleSize}`)}
             ref={elementRef}
           >
-            {title + " STAGING"}
+            {title + " STAGING 101"}
           </div>
           <div className={styles.description}>
             <StructuredText data={description} />
