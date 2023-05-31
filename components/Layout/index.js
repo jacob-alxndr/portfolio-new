@@ -8,44 +8,32 @@ import Markdown from "@components/Utilities/Markdown";
 import { gsap } from "gsap";
 import { useStore } from "@lib/store";
 import Button from "@components/Utilities/Button";
-// import SplitText from "@components/Utilities/SplitText";
+
 const Layout = (props) => {
   const [data, setData] = useState(props);
   const elementRef = useRef(null);
+
   const listRef = useRef();
   const { eyebrow, title, description, bio, titleSize, experience, links } =
     data;
   const tl = gsap.timeline();
   const lenis = useStore(({ lenis }) => lenis);
 
-  // useEffect(() => {
-  //   const titleEl = elementRef.current;
-  //   // tl.formTo(titleEl, {
-  //   //   y: "100px",
-  //   //   ease: "Power4.easeInOut",
-  //   //   duration: 1.5,
-  //   // });
-  //   let ctx = gsap.context(() => {
-  //     tl.fromTo(
-  //       titleEl,
-  //       { autoAlpha: 0, y: 0 },
-  //       { autoAlpha: 1, y: 0, duration: 1 }
-  //     );
-  //     console.log("titleEl", titleEl);
-  //   });
-  //   return () => ctx.revert(); // <- cleanup!
-  // }, []);
+  useEffect(() => {
+    const elements = elementRef.current.children;
+    let ctx = gsap.context(() => {
+      tl.set(elements, { autoAlpha: 0, y: 10 });
+      tl.to(elements, { autoAlpha: 1, y: 0, stagger: 0.2 });
+    });
+    return () => ctx.revert(); // <- cleanup!
+  }, []);
 
   return (
     <div className={classNames(styles.container, "padding-x-lg")}>
       <div className={classNames(styles.header)}>
-        <div className={styles.content}>
-          <div
-            className={classNames(styles.title, `u-heading--${titleSize}`)}
-            ref={elementRef}
-          >
+        <div className={styles.content} ref={elementRef}>
+          <div className={classNames(styles.title, `u-heading--${titleSize}`)}>
             {title}
-            {/* <SplitText copy={title} role={"heading"} /> */}
           </div>
           <div className={styles.description}>
             <StructuredText data={description} />
@@ -61,7 +49,6 @@ const Layout = (props) => {
                   lenis.scrollTo(list[i], {
                     offset: -90,
                     lerp: 0.1,
-
                     lock: true,
                   });
                 }}

@@ -1,9 +1,8 @@
 import LayoutFields from "../fragments/layout";
-import HeroFields from "../fragments/hero";
 import DemoSectionFields from "../fragments/demoSection";
-import CardListFields from "operations/fragments/cardList";
 import GlobalNavigationFields from "operations/fragments/globalNavigation";
 import GlobalFooterFields from "operations/fragments/globalFooter";
+
 const GET_HOME = `
 query HomeQuery {
   home {
@@ -11,12 +10,7 @@ query HomeQuery {
       ... on DemosectionRecord {
         ...DemoSectionFields
       }  
-      ... on CardListRecord {
-        ...CardListFields
-      }  
-  
     }
-
     layout {
       ...LayoutFields
     }
@@ -27,12 +21,10 @@ query HomeQuery {
   globalFooter {
     ${GlobalFooterFields}
   }
-
 }
 
 ${LayoutFields}
 ${DemoSectionFields}
-${CardListFields}
 `;
 
 export default GET_HOME;
