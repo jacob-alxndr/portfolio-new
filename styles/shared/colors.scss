@@ -1,7 +1,8 @@
 // Primary
-$color-primary-400: #8be9fd;
-$color-primary-500: hsla(191, 97%, 77%, 0.1);
-$color-primary-700: hsla(191, 97%, 77%, 0.02);
+
+$color-primary-400: var(--color-primary-400);
+$color-primary-500: var(--color-primary-500);
+$color-primary-700: var(--color-primary-700);
 
 // Primary
 // $color-primary-400: #c0ff70;
@@ -12,8 +13,8 @@ $color-primary-700: hsla(191, 97%, 77%, 0.02);
 // $color-secondary-500: #f4493c;
 
 // Greys
-$color-white: #fff;
-$color-black: #121212;
+$color-white: var(--color-white);
+$color-black: var(--color-black);
 $color-grey-00: $color-white;
 $color-grey-10: #f4f4f4;
 $color-grey-20: #eeeeee;
@@ -27,8 +28,8 @@ $color-grey-90: #0e0e0e;
 $color-grey-100: $color-black;
 
 // Typography
-$color-eyebrow: rgba(235, 249, 251, 0.5);
-$color-paragraph: rgba(235, 249, 251, 0.9);
+$color-eyebrow: var(--color-eyebrow);
+$color-paragraph: var(--color-paragraph);
 $color-title: $color-white;
 
 // Status

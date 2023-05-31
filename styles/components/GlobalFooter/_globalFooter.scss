@@ -8,17 +8,22 @@
   padding-bottom: global.rem(48);
   @include global.mq("tablet-medium") {
     position: relative;
-}
+  }
 
   @include global.mq("tablet") {
     padding-bottom: global.rem(24);
   }
-
-
 }
 .content {
   margin: 0 auto;
-  // max-width: 1024px;
+  margin-top: global.rem(48);
+  display: flex;
+  align-items: baseline;
+  @include global.fontSize(12, 14);
+  @include global.mq("tablet") {
+    margin: global.rem(16) 0 0;
+    padding: global.rem(16) 0;
+  }
 }
 
 .grid {
@@ -73,14 +78,8 @@
     margin-bottom: global.rem(16);
   }
 }
-
-.legal {
-  @include global.fontSize(12, 14);
-  // color: global.$color-brown-transparent-400-50;
-  margin-top: global.rem(48);
-  @include global.mq("tablet") {
-    // border-top: 1px solid global.$color-brown-transparent-400-30;
-    margin: global.rem(16) 0 0;
-    padding: global.rem(16) 0;
-  }
+.button {
+  color: global.$color-primary-400;
+  margin-left: global.rem(8);
+  @include global.fontSize(12, 16);
 }

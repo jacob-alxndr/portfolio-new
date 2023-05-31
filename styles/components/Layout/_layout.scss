@@ -8,35 +8,6 @@
   scroll-behavior: smooth;
   position: relative;
 
-  // .orb {
-  //   position: fixed;
-  //   opacity: 1;
-  //   // background: radial-gradient(
-  //   //   global.$color-primary-400 10%,
-  //   //   global.$color-black 70%
-  //   // );
-  //   // background: radial-gradient(
-  //   //   circle farthest-side at center center,
-  //   //   global.$color-primary-400 0%,
-  //   //   global.$color-black 100%
-  //   // );
-  //   // transform: translate(-50%, -50%);
-  //   transform-origin: center;
-  //   border-radius: 10000px;
-
-  //   background: radial-gradient(
-  //       175% 172% at 42% 0,
-  //       hsla(100, 100%, 100%, 0.8) 0,
-  //       hsla(0, 0%, 100%, 0) 100%
-  //     ),
-  //     linear-gradient(0deg, #8be9fd, #8be9fd), global.$color-black;
-  //   filter: drop-shadow(32px 12px 30px #8be9fd);
-
-  //   @include global.animate(rotate, 10s, linear, infinite);
-  //   height: 500px;
-  //   width: 500px;
-  // }
-
   @include global.mq("tablet-medium") {
     grid-template-columns: 1fr;
   }

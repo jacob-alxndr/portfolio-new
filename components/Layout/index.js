@@ -21,6 +21,7 @@ const Layout = (props) => {
 
   useEffect(() => {
     const elements = elementRef.current.children;
+
     let ctx = gsap.context(() => {
       tl.set(elements, { autoAlpha: 0, y: 10 });
       tl.to(elements, { autoAlpha: 1, y: 0, stagger: 0.2 });

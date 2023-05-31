@@ -1,54 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "@styles/GlobalFooter/index.module.scss";
 import classNames from "classnames";
 import { renderButtons } from "@components/Utilities/Button/utils";
 import Button from "@components/Utilities/Button";
 import { useStore } from "@lib/store";
 const GlobalFooter = (props) => {
-  const { primaryColumns } = props;
   const footerData = useStore(({ footerData }) => footerData);
-
   const { pagesTitle } = footerData || props;
-  const renderColumns = () => {
-    if (!primaryColumns) return "";
-    return primaryColumns?.map((column, index) => {
-      const columnTitle = column?.title;
-      const links = renderButtons(column?.links, styles.columnLinks);
-      return (
-        <div
-          key={`${columnTitle}${index}`}
-          className={classNames(styles.column)}
-        >
-          {column?.description && (
-            <div className={styles.description}>
-              <p>{column?.description}</p>
-            </div>
-          )}
-          {links}
-        </div>
-      );
-    });
-  };
+  const [theme, setTheme] = useState(false);
 
+  const handleClick = () => {
+    document.documentElement.setAttribute(
+      "user-theme",
+      theme ? "dark" : "light"
+    );
+    setTheme(!theme);
+  };
   return (
     <footer
       id={pagesTitle}
       className={classNames(styles.container, "padding-x-lg")}
     >
       <div className={styles.content}>
-        <div className={styles.logoContainer}>
+        {process.env.NEXT_PUBLIC_SITE_NAME} &copy; {new Date().getFullYear()}{" "}
+        <div>
           <Button
             data={{
-              buttonUrl: "/",
-              buttonType: "internal",
+              buttonType: "no-action",
+              buttonStyle: "primary",
             }}
-            classes={styles.logo}
-          ></Button>
-          <div className={styles.rule}></div>
-        </div>
-        <div className={styles.grid}>{renderColumns()}</div>
-        <div className={styles.legal}>
-          &copy; {new Date().getFullYear()} {process.env.NEXT_PUBLIC_SITE_NAME}
+            onClick={handleClick}
+            classes={styles.button}
+          >
+            {theme ? "Dark" : "Light"} Theme
+          </Button>
         </div>
       </div>
     </footer>

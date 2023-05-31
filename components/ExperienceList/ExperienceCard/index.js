@@ -36,6 +36,9 @@ export default function ExperienceCard({ data }) {
           <div className={styles.image}>
             <Image
               alt={title}
+              lazyLoad={true}
+              priority={true}
+              fadeInDuration={2000}
               // lazyLoad={false}
               // fadeInDuration={1000}
               // layout="fill"
