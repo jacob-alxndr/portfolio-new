@@ -6,9 +6,10 @@
     display: block;
     color: global.$color-title;
     font-weight: 700;
-    margin-bottom: global.rem(14);
+    // margin-bottom: global.rem(14);
   }
   .description {
+    margin-top: global.rem(14);
     max-width: 27rem;
     p {
       @include global.fontSize(18, 24);
