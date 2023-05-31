@@ -1,17 +1,14 @@
 import classNames from "classnames";
 import styles from "@styles/Layout/index.module.scss";
-import mapping from "./mapping";
-import debounce from "lodash.debounce";
 import { useEffect, useRef, useState } from "react";
-import { StructuredText } from "react-datocms";
 import ExperienceList from "@components/ExperienceList";
 import Markdown from "@components/Utilities/Markdown";
 import { gsap } from "gsap";
-import { useStore } from "@lib/store";
-import Button from "@components/Utilities/Button";
 import { BREAKPOINT_TABLET } from "@utils/breakpoints";
+import Header from "@components/Header";
+import mapping from "./mapping";
+
 const Layout = (props) => {
-  const lenis = useStore(({ lenis }) => lenis);
   const [data, setData] = useState(props);
   const [mobile, setMobile] = useState(false);
   const [windowSize, setWindowSize] = useState(false);
@@ -29,9 +26,9 @@ const Layout = (props) => {
 
   const throttle = (callback, delay = 100) => {
     let shouldWait = false;
+
     return (...args) => {
       if (shouldWait) return;
-
       callback(...args);
       shouldWait = true;
       setTimeout(() => {
@@ -39,6 +36,7 @@ const Layout = (props) => {
       }, delay);
     };
   };
+
   useEffect(() => {
     handleResize();
     const throttled = throttle(handleResize, 100);
@@ -61,51 +59,24 @@ const Layout = (props) => {
 
   return (
     <div className={classNames(styles.container, "padding-x-lg")}>
-      <div className={classNames(styles.header)}>
-        <div className={styles.content} ref={elementRef}>
-          <div className={classNames(styles.title, `u-heading--${titleSize}`)}>
-            {title}
-          </div>
-          <div className={styles.description}>
-            <StructuredText data={description} />
-          </div>
-          <div className={styles.links}>
-            {links.map((link, i) => (
-              <Button
-                key={i}
-                data={link}
-                attr={{ ["data-text"]: link?.buttonText }}
-                onClick={() => {
-                  const list = listRef.current.children;
-                  console.log("mobile", mobile);
-                  lenis.scrollTo(list[i], {
-                    offset: mobile ? -45 : -90,
-                    lerp: 0.1,
-                    lock: true,
-                  });
-                }}
-                // All default style links should not have animation or special styling
-                {...(link?.buttonStyle === "default" && {
-                  clean: true,
-                })}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
+      <Header
+        props={{ title, links, description, titleSize, listRef, mobile }}
+        ref={elementRef}
+      />
       <div className={styles.column}>
-        <div className={styles.description}>
-          <Markdown>{bio}</Markdown>
-        </div>
-        <div className={styles.lists} ref={listRef}>
-          {experience &&
-            experience.map((item, i) => {
+        {bio && (
+          <div className={styles.description}>
+            <Markdown>{bio}</Markdown>
+          </div>
+        )}
+        {experience && (
+          <div className={styles.lists} ref={listRef}>
+            {experience.map((item, i) => {
               const { id } = item;
-
               return <ExperienceList key={id} data={item} ref={listRef} />;
             })}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

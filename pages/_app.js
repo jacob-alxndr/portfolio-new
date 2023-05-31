@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
   const setIsTouch = useStore((state) => state.setIsTouch);
   const [lenis, setLenis] = useStore((state) => [state.lenis, state.setLenis]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const lenis = new Lenis({
       duration: 1.8,
       easing: (t) => Math.min(1.1, 1.01 - Math.pow(2, -10 * t)),

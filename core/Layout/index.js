@@ -30,10 +30,10 @@ export default function Layout({
   const setFooterData = useStore((state) => state.setFooterData);
   // const setPreview = useStore(({ setPreview }) => setPreview);
 
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useLayoutEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   useEffect(() => {
     if (!navigationData) {
