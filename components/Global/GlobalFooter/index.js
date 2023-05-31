@@ -23,18 +23,16 @@ const GlobalFooter = (props) => {
     >
       <div className={styles.content}>
         {process.env.NEXT_PUBLIC_SITE_NAME} &copy; {new Date().getFullYear()}{" "}
-        <div>
-          <Button
-            data={{
-              buttonType: "no-action",
-              buttonStyle: "primary",
-            }}
-            onClick={handleClick}
-            classes={styles.button}
-          >
-            {theme ? "Dark" : "Light"} Theme
-          </Button>
-        </div>
+        <Button
+          data={{
+            buttonType: "no-action",
+            buttonStyle: "primary",
+          }}
+          onClick={handleClick}
+          classes={styles.button}
+        >
+          {theme ? "Dark" : "Light"} Theme
+        </Button>
       </div>
     </footer>
   );
