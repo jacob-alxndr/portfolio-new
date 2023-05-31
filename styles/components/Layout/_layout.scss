@@ -72,9 +72,9 @@
   }
   .links {
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     margin-top: global.rem(24);
-    row-gap: global.rem(16);
+    column-gap: global.rem(24);
     width: 100%;
   }
 }
