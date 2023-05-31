@@ -23,6 +23,8 @@
   @include global.mq("tablet") {
     margin: global.rem(16) 0 0;
     padding: global.rem(16) 0;
+    row-gap: global.rem(8);
+    flex-direction: column-reverse;
   }
 }
 
@@ -82,4 +84,7 @@
   color: global.$color-primary-400;
   margin-left: global.rem(8);
   @include global.fontSize(12, 16);
+  @include global.mq("tablet") {
+    margin: 0;
+  }
 }
