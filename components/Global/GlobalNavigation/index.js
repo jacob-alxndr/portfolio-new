@@ -18,7 +18,7 @@ const GlobalNavigation = (props) => {
   const router = useRouter();
   const primary = navigationData?.primary || props.primary;
   const [mobileActive, setMobileActive] = useState(false);
-  console.log("navigationData", navigationData);
+
   const setUpTimeline = () => {};
   const setUp = (resize) => {};
   const handleClick = () => {};

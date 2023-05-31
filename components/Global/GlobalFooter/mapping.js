@@ -19,7 +19,7 @@ import buttonsMapping from "@components/Utilities/Button/mapping";
 
 const mapping = (data) => {
   if (!data) return "";
-  console.log("map", data);
+
   // const primaryColumns = getAllColumns(data);
   return {
     ...data,

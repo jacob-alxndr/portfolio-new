@@ -1,7 +1,6 @@
 @use "/styles/shared/global";
 
 .card {
-  background-color: global.$color-black;
   overflow: hidden;
   transition: background-color 0.3s global.$easing;
   border-radius: map_get(global.$border-radius, "xxxs");

@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
   useLayoutEffect(() => {
     const lenis = new Lenis({
       duration: 1.8,
-      easing: (t) => Math.min(1.1, 1.0001 - Math.pow(2, -10 * t)),
+      easing: (t) => Math.min(1.1, 1.01 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,

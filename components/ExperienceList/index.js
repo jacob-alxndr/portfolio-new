@@ -14,8 +14,8 @@ export default forwardRef(function ExperienceList({ data }, ref) {
       </div>
 
       {experienceItems &&
-        experienceItems.map((item) => (
-          <ExperienceCard key={item?.id} data={item} />
+        experienceItems.map((item, i) => (
+          <ExperienceCard key={i} data={item} />
         ))}
     </div>
   );

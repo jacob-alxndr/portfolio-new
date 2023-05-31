@@ -8,6 +8,7 @@ import Markdown from "@components/Utilities/Markdown";
 import { gsap } from "gsap";
 import { useStore } from "@lib/store";
 import Button from "@components/Utilities/Button";
+// import SplitText from "@components/Utilities/SplitText";
 const Layout = (props) => {
   const [data, setData] = useState(props);
   const elementRef = useRef(null);
@@ -16,7 +17,7 @@ const Layout = (props) => {
     data;
   const tl = gsap.timeline();
   const lenis = useStore(({ lenis }) => lenis);
-  const listNodes = useStore(({ listNodes }) => listNodes);
+
   // useEffect(() => {
   //   const titleEl = elementRef.current;
   //   // tl.formTo(titleEl, {
@@ -44,6 +45,7 @@ const Layout = (props) => {
             ref={elementRef}
           >
             {title}
+            {/* <SplitText copy={title} role={"heading"} /> */}
           </div>
           <div className={styles.description}>
             <StructuredText data={description} />
@@ -56,7 +58,12 @@ const Layout = (props) => {
                 attr={{ ["data-text"]: link?.buttonText }}
                 onClick={() => {
                   const list = listRef.current.children;
-                  lenis.scrollTo(list[i]);
+                  lenis.scrollTo(list[i], {
+                    offset: -90,
+                    lerp: 0.1,
+
+                    lock: true,
+                  });
                 }}
                 // All default style links should not have animation or special styling
                 {...(link?.buttonStyle === "default" && {
