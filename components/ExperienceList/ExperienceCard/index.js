@@ -39,11 +39,8 @@ export default function ExperienceCard({ data }) {
               lazyLoad={true}
               priority={true}
               fadeInDuration={2000}
-<<<<<<< HEAD
               // lazyLoad={false}
               // fadeInDuration={1000}
-=======
->>>>>>> 68bca8cb6f0a49a20b5af185c4688547a1a14f1d
               // layout="fill"
               // objectFit="cover"
               // objectPosition="50% 50%"
