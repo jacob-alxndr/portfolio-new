@@ -37,7 +37,8 @@ export default function ExperienceCard({ data }) {
             <Image
               alt={title}
               lazyLoad={true}
-              // fadeInDuration={1000}
+              priority={true}
+              fadeInDuration={2000}
               // layout="fill"
               // objectFit="cover"
               // objectPosition="50% 50%"
