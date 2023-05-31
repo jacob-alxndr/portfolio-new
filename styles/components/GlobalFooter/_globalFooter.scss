@@ -18,14 +18,23 @@
   margin: 0 auto;
   margin-top: global.rem(48);
   display: flex;
+  gap: 0 global.rem(8);
   align-items: baseline;
   @include global.fontSize(12, 14);
+  .button {
+    color: global.$color-primary-400;
+    @include global.fontSize(12, 16);
+  }
+
   @include global.mq("tablet") {
     margin: global.rem(16) 0 0;
     padding: global.rem(16) 0;
-    row-gap: global.rem(8);
+    gap: global.rem(8) 0;
     flex-direction: column-reverse;
     align-items: end;
+    .rule {
+      display: none;
+    }
   }
 }
 
@@ -79,13 +88,5 @@
 
   a {
     margin-bottom: global.rem(16);
-  }
-}
-.button {
-  color: global.$color-primary-400;
-  margin-left: global.rem(8);
-  @include global.fontSize(12, 16);
-  @include global.mq("tablet") {
-    margin: 0;
   }
 }

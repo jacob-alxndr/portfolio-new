@@ -22,17 +22,18 @@ const GlobalFooter = (props) => {
       className={classNames(styles.container, "padding-x-lg")}
     >
       <div className={styles.content}>
-        {process.env.NEXT_PUBLIC_SITE_NAME} &copy; {new Date().getFullYear()}{" "}
         <Button
           data={{
             buttonType: "no-action",
             buttonStyle: "primary",
+            buttonText: "Theme",
           }}
           onClick={handleClick}
           classes={styles.button}
-        >
-          {theme ? "Dark" : "Light"} Theme
-        </Button>
+        ></Button>
+        <span className={styles.rule}> | </span>{" "}
+        {process.env.NEXT_PUBLIC_SITE_NAME} &copy;
+        {new Date().getFullYear()}
       </div>
     </footer>
   );

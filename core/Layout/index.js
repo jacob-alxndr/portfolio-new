@@ -38,7 +38,6 @@ export default function Layout({
   useEffect(() => {
     if (!navigationData) {
       const mapped = mappingNav(cmsNavigationData);
-      console.log("mapped", mapped);
       setNavigationData(mapped);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

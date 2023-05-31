@@ -23,49 +23,46 @@ const GlobalNavigation = (props) => {
   const setUp = (resize) => {};
   const handleClick = () => {};
   const checkScroll = ({ scroll, direction }) => {};
-  useEffect(() => {}, []);
+  useEffect(() => {
+    // console.log({ primary });
+  }, []);
 
   return (
-    <header className={classNames(styles.header, classes, "padding-x-lg")}>
-      <nav
-        className={classNames(
-          styles.nav
-          // { [styles["is-mobile"]]: isMobile },
-          // { [styles["is-active"]]: mobileActive },
-        )}
-      >
-        <div className={classNames(styles.navContent)}>
-          {primary &&
-            primary?.map((button) => {
-              return (
-                <div
-                  key={button?.buttonId}
-                  className={classNames(
-                    // {
-                    // [styles["hide"]]:
-                    // (!isMobile && button?.buttonText === "Home") ||
-                    // (!isMobile && button?.buttonText === "Contact"),
-                    // },
-                    "js-menu-item"
-                  )}
-                >
-                  <Button
-                    data={button}
-                    attr={{ ["data-text"]: button?.buttonText }}
-                    classes={classNames(styles.link, {
-                      [styles.active]: router.asPath === button?.buttonUrl,
-                    })}
-                    // All default style links should not have animation or special styling
-                    {...(button?.buttonStyle === "default" && {
-                      clean: true,
-                    })}
-                  />
-                </div>
-              );
-            })}
-        </div>
-      </nav>
-    </header>
+    primary?.[0] && (
+      <header className={classNames(styles.header, classes, "padding-x-lg")}>
+        <nav
+          className={classNames(
+            styles.nav
+            // { [styles["is-mobile"]]: isMobile },
+            // { [styles["is-active"]]: mobileActive },
+          )}
+        >
+          <div className={classNames(styles.navContent)}>
+            {primary &&
+              primary?.map((button) => {
+                return (
+                  <div
+                    key={button?.buttonId}
+                    className={classNames("js-menu-item")}
+                  >
+                    <Button
+                      data={button}
+                      attr={{ ["data-text"]: button?.buttonText }}
+                      classes={classNames(styles.link, {
+                        [styles.active]: router.asPath === button?.buttonUrl,
+                      })}
+                      // All default style links should not have animation or special styling
+                      {...(button?.buttonStyle === "default" && {
+                        clean: true,
+                      })}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+        </nav>
+      </header>
+    )
   );
 };
 
