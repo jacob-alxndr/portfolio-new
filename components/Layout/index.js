@@ -27,13 +27,25 @@ const Layout = (props) => {
       : setMobile(mobile);
   };
 
+  const throttle = (callback, delay = 100) => {
+    let shouldWait = false;
+    return (...args) => {
+      if (shouldWait) return;
+
+      callback(...args);
+      shouldWait = true;
+      setTimeout(() => {
+        shouldWait = false;
+      }, delay);
+    };
+  };
   useEffect(() => {
     handleResize();
-    const debounced = debounce(handleResize, 100);
-    window.addEventListener("resize", debounced, { passive: true });
+    const throttled = throttle(handleResize, 100);
+    window.addEventListener("resize", throttled, { passive: true });
 
     return () =>
-      window.removeEventListener("resize", debounced, { passive: true });
+      window.removeEventListener("resize", throttled, { passive: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
