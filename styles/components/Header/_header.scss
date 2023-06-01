@@ -1,0 +1,45 @@
+@use "/styles/shared/global";
+.header {
+  width: 100%;
+
+  .content {
+    position: fixed;
+    top: global.rem(96);
+
+    @include global.mq("tablet-medium") {
+      padding: 0rem 1rem 0rem;
+      position: relative;
+      margin-bottom: global.rem(32);
+      top: global.rem(48);
+      .description {
+        max-width: 100%;
+      }
+    }
+  }
+  .title,
+  .description {
+    text-align: left;
+  }
+  .title {
+    // opacity: 0;
+    font-weight: 700;
+    color: global.$color-white;
+  }
+
+  .description {
+    max-width: 23rem;
+    p {
+      @include global.fontSize(18, 24);
+      color: global.$color-white;
+      font-weight: 100;
+      margin: 0;
+    }
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: global.rem(24);
+    gap: global.rem(16) global.rem(24);
+    width: 100%;
+  }
+}

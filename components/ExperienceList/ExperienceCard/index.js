@@ -2,7 +2,7 @@ import styles from "@styles/ExperienceCard/index.module.scss";
 import classNames from "classnames";
 import Badge from "@components/Utilities/Badge";
 import { Image } from "react-datocms";
-import Link from "next/link";
+import { ConditionalWrapper } from "@utils/helpers";
 export default function ExperienceCard({ data }) {
   const {
     eyebrow,
@@ -10,22 +10,16 @@ export default function ExperienceCard({ data }) {
     subtitle,
     description,
     badges,
+    hasExternalLink,
     image: { [0]: image },
   } = data;
-  const ConditionalWrapper = ({ condition, wrapper, children }) =>
-    condition ? wrapper(children) : children;
-  return (
-    <div className={styles.card}>
-      {/* <Link href={title.includes("www") ? `https://${title}` : null}> */}
 
+  return (
+    <div
+      className={classNames(styles.card, { [styles.hasLink]: hasExternalLink })}
+    >
       <ConditionalWrapper
-        condition={
-          title.includes(".com") ||
-          title.includes(".app") ||
-          title.includes(".org") ||
-          title.includes(".photo") ||
-          title.includes(".la")
-        }
+        condition={hasExternalLink}
         wrapper={(children) => (
           <a target="_blank" href={`https://${title}`}>
             {children}
@@ -36,14 +30,9 @@ export default function ExperienceCard({ data }) {
           <div className={styles.image}>
             <Image
               alt={title}
+              fadeInDuration={2000}
               lazyLoad={true}
               priority={true}
-              fadeInDuration={2000}
-              // lazyLoad={false}
-              // fadeInDuration={1000}
-              // layout="fill"
-              // objectFit="cover"
-              // objectPosition="50% 50%"
               data={image?.image?.responsiveImage}
             />
           </div>
@@ -63,7 +52,6 @@ export default function ExperienceCard({ data }) {
           </div>
         </div>
       </ConditionalWrapper>
-      {/* </Link> */}
     </div>
   );
 }

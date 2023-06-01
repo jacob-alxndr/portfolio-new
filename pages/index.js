@@ -25,17 +25,20 @@ const components = {
   },
 };
 
-export default function Home({ data }) {
+export default function Home({ subscription, preview }) {
   const {
-    home: { layout, components: bodyComponents },
-    // _site,
-    globalNavigation,
-    globalFooter,
-  } = data;
+    data: {
+      home: { layout, components: bodyComponents },
+      // _site,
+      globalNavigation,
+      globalFooter,
+    },
+  } = useQuerySubscription(subscription);
 
   return (
     <div>
       <Layout
+        preview={preview}
         components={components}
         navigationData={globalNavigation}
         footerData={globalFooter}
@@ -44,13 +47,47 @@ export default function Home({ data }) {
     </div>
   );
 }
-export async function getStaticProps() {
-  const data = await request({
-    query: GET_HOME,
-    variables: { limit: 10 },
-  });
+export async function getStaticProps({ params, preview = false }) {
+  // console.log("CONTEXT", {
+  //   context,
+  //   preview: context.preview,
+  //   previewData: context.previewData,
+  // });
+  // console.log("preview", params);
+  // const { preview } = context;
+  // const data = await request({
+  //   query: GET_HOME,
+  //   includeDrafts: preview,
+  //   preview,
+  //   variables: { limit: 10 },
+  // });
+  // return {
+  //   props: { data },
+  // };
+
   return {
-    props: { data },
+    props: {
+      subscription: preview
+        ? {
+            initialData: await request({
+              query: GET_HOME,
+              includeDrafts: preview,
+              preview,
+              variables: { limit: 10 },
+            }),
+            token: process.env.PREVIEW_MODE_SECRET,
+          }
+        : {
+            enabled: false,
+            initialData: await request({
+              query: GET_HOME,
+              includeDrafts: preview,
+              preview,
+              variables: { limit: 10 },
+            }),
+          },
+      preview,
+    },
   };
 }
 

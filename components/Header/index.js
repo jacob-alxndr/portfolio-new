@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import styles from "@styles/Layout/index.module.scss";
+import styles from "@styles/Header/index.module.scss";
 import { StructuredText } from "react-datocms";
 import Button from "@components/Utilities/Button";
 import React, { forwardRef } from "react";

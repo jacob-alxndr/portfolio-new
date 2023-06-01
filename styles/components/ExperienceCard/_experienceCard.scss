@@ -52,14 +52,12 @@
   }
 
   body:not(:global(.is-touch)) & {
-    &:hover {
+    &.hasLink:hover {
       cursor: pointer;
       background-color: global.$color-primary-700;
-
       .image img {
         transform: scale(1.05);
       }
-
       // transform: translateY(-10px);
       // :global(.c-button--primary) {
       //   // background-color: global.$color-black;

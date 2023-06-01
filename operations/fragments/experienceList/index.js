@@ -11,11 +11,12 @@ const ExperienceListFields = `
         ... on ImageRecord {
             ${ImageFields}
         }
-    }
-    eyebrow
+      }
+      eyebrow
       title
       subtitle
       ${BadgesFields}
+      hasExternalLink
     }
   }
 
