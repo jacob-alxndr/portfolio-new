@@ -8,8 +8,6 @@ import { ibmPlexMono, ibmPlexSans } from "@lib/fonts";
 import { useStore } from "@lib/store";
 import Lenis from "@studio-freight/lenis";
 import { useFrame } from "@studio-freight/hamo";
-import Script from "next/script";
-
 export default function App({ Component, pageProps }) {
   // const [isTouch, setIsTouch] = useState(false);
   const isTouch = useStore(({ isTouch }) => isTouch);
@@ -51,6 +49,19 @@ export default function App({ Component, pageProps }) {
   }, [isTouch]);
 
   useEffect(() => {
+    const localTheme = localStorage.getItem("user-theme");
+    if (localTheme) {
+      document.documentElement.setAttribute(
+        "user-theme",
+        JSON.parse(localTheme)
+      );
+    } else {
+      document.documentElement.setAttribute("user-theme", "dark");
+      localStorage.setItem("user-theme", JSON.stringify("dark"));
+    }
+  });
+
+  useEffect(() => {
     setIsTouch(mobileDetect());
   }, []);
   return (
@@ -77,7 +88,6 @@ export default function App({ Component, pageProps }) {
           }
         `}</style>
       </Head>
-      <Script src="/theme.js" strategy="beforeInteractive" />
       <GlobalNavigation classes="js-site js-site--mobile" />
       <Component {...pageProps} />
       <GlobalFooter classes="js-site js-site--mobile" />

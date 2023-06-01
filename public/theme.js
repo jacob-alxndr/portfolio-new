@@ -1,7 +1,7 @@
-(function initTheme() {
-  const theme = localStorage.getItem("user-theme") || "dark";
-  if (theme === `"light"`) {
-    document.documentElement.setAttribute("user-theme", "light");
-    localStorage.setItem("user-theme", "light");
-  }
-})();
+// (function initTheme() {
+//   const theme = localStorage.getItem("user-theme") || "dark";
+//   if (theme === `"light"`) {
+//     document.documentElement.setAttribute("user-theme", "light");
+//     localStorage.setItem("user-theme", "light");
+//   }
+// })();
