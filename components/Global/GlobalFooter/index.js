@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@styles/GlobalFooter/index.module.scss";
 import classNames from "classnames";
 import { renderButtons } from "@components/Utilities/Button/utils";
@@ -9,12 +9,28 @@ const GlobalFooter = (props) => {
   const { pagesTitle } = footerData || props;
   const [theme, setTheme] = useState(false);
 
+  useEffect(() => {
+    // const localTheme = localStorage.getItem("user-theme");
+    // if (localTheme) {
+    //   document.documentElement.setAttribute(
+    //     "user-theme",
+    //     JSON.parse(localTheme)
+    //   );
+    // } else {
+    //   document.documentElement.setAttribute("user-theme", "dark");
+    //   localStorage.setItem("user-theme", JSON.stringify("dark"));
+    // }
+  }, []);
+
   const handleClick = () => {
-    document.documentElement.setAttribute(
-      "user-theme",
-      theme ? "dark" : "light"
-    );
-    setTheme(!theme);
+    const localTheme = localStorage.getItem("user-theme");
+    if (localTheme === `"dark"`) {
+      document.documentElement.setAttribute("user-theme", "light");
+      localStorage.setItem("user-theme", JSON.stringify("light"));
+    } else {
+      document.documentElement.setAttribute("user-theme", "dark");
+      localStorage.setItem("user-theme", JSON.stringify("dark"));
+    }
   };
   return (
     <footer

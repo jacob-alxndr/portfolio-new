@@ -8,6 +8,8 @@ import { ibmPlexMono, ibmPlexSans } from "@lib/fonts";
 import { useStore } from "@lib/store";
 import Lenis from "@studio-freight/lenis";
 import { useFrame } from "@studio-freight/hamo";
+import Script from "next/script";
+
 export default function App({ Component, pageProps }) {
   // const [isTouch, setIsTouch] = useState(false);
   const isTouch = useStore(({ isTouch }) => isTouch);
@@ -47,6 +49,7 @@ export default function App({ Component, pageProps }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTouch]);
+
   useEffect(() => {
     setIsTouch(mobileDetect());
   }, []);
@@ -74,6 +77,7 @@ export default function App({ Component, pageProps }) {
           }
         `}</style>
       </Head>
+      <Script src="/theme.js" strategy="beforeInteractive" />
       <GlobalNavigation classes="js-site js-site--mobile" />
       <Component {...pageProps} />
       <GlobalFooter classes="js-site js-site--mobile" />
