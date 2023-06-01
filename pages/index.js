@@ -1,8 +1,6 @@
 import { request } from "../lib/datocms";
 import { useQuerySubscription } from "react-datocms";
 import GET_HOME from "operations/queries/getHome";
-import classNames from "classnames";
-import CardList from "@components/CardList";
 import Layout from "core/Layout";
 import dynamic from "next/dynamic";
 

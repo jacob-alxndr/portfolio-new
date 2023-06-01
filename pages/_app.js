@@ -17,7 +17,8 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.8,
-      easing: (t) => Math.min(1.1, 1.01 - Math.pow(2, -10 * t)),
+      easing: (t) => Math.min(1, 1.000001 - Math.pow(2, -100 * t)),
+      // easing: (t) => Math.sin((0. * Math.PI) / 2),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
