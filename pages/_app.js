@@ -50,11 +50,9 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     const localTheme = localStorage.getItem("user-theme");
-    if (localTheme) {
-      document.documentElement.setAttribute(
-        "user-theme",
-        JSON.parse(localTheme)
-      );
+    console.log("localTheme", localTheme);
+    if (localTheme === `"light"`) {
+      document.documentElement.setAttribute("user-theme", "light");
     } else {
       document.documentElement.setAttribute("user-theme", "dark");
       localStorage.setItem("user-theme", JSON.stringify("dark"));

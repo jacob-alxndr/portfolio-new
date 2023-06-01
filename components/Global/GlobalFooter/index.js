@@ -24,7 +24,7 @@ const GlobalFooter = (props) => {
 
   const handleClick = () => {
     const localTheme = localStorage.getItem("user-theme");
-    localStorage.setItem("user-theme", JSON.stringify("dark"));
+
     if (localTheme === `"dark"`) {
       document.documentElement.setAttribute("user-theme", "light");
       localStorage.setItem("user-theme", JSON.stringify("light"));
