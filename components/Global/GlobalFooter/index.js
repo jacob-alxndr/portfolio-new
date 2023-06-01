@@ -4,34 +4,16 @@ import classNames from "classnames";
 import { renderButtons } from "@components/Utilities/Button/utils";
 import Button from "@components/Utilities/Button";
 import { useStore } from "@lib/store";
+import { useTheme } from "next-themes";
+
 const GlobalFooter = (props) => {
   const footerData = useStore(({ footerData }) => footerData);
   const { pagesTitle } = footerData || props;
-  const [theme, setTheme] = useState(false);
-
-  useEffect(() => {
-    // const localTheme = localStorage.getItem("user-theme");
-    // if (localTheme) {
-    //   document.documentElement.setAttribute(
-    //     "user-theme",
-    //     JSON.parse(localTheme)
-    //   );
-    // } else {
-    //   document.documentElement.setAttribute("user-theme", "dark");
-    //   localStorage.setItem("user-theme", JSON.stringify("dark"));
-    // }
-  }, []);
+  const { theme, setTheme } = useTheme();
 
   const handleClick = () => {
-    const localTheme = localStorage.getItem("user-theme");
-
-    if (localTheme === `"dark"`) {
-      document.documentElement.setAttribute("user-theme", "light");
-      localStorage.setItem("user-theme", JSON.stringify("light"));
-    } else {
-      document.documentElement.setAttribute("user-theme", "dark");
-      localStorage.setItem("user-theme", JSON.stringify("dark"));
-    }
+    if (theme === "system") setTheme("light");
+    if (theme === "light") setTheme("system");
   };
   return (
     <footer
@@ -48,9 +30,10 @@ const GlobalFooter = (props) => {
           onClick={handleClick}
           classes={styles.button}
         ></Button>
-        <span className={styles.rule}> | </span>{" "}
-        {process.env.NEXT_PUBLIC_SITE_NAME} &copy;
-        {new Date().getFullYear()}
+        <span className={styles.rule}> | </span>
+        <span>
+          {process.env.NEXT_PUBLIC_SITE_NAME} &copy; {new Date().getFullYear()}
+        </span>
       </div>
     </footer>
   );

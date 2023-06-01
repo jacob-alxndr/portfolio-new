@@ -10,7 +10,7 @@
   @include typography.font-secondaryN4;
   cursor: pointer;
   display: inline-flex;
-  transition: 0.5s variables.$easing;
+  transition: color 0.5s variables.$easing;
   white-space: nowrap;
 }
 

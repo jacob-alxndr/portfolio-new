@@ -21,7 +21,7 @@
   --color-paragraph: rgba(235, 249, 251, 0.9);
   --color-title: $color-white;
 }
-:root[user-theme="light"] {
+[data-theme="light"] {
   --color-white: #121212;
   --color-black: #fff;
   --color-grey-00: --color-white;
@@ -54,7 +54,7 @@ body {
   // scroll-behavior: smooth;
   background: global.$color-black;
   color: global.$color-white;
-  transition: color 0.5s ease, background-color 0.5s ease;
+  // transition: color 0.2s ease, background-color 0.2s ease;
   @include global.fontSize(16, 24);
   @include global.font-primaryN4;
 
@@ -109,33 +109,6 @@ ul {
 
   li {
     list-style-type: none;
-  }
-}
-
-.transition-container {
-  z-index: global.$zIndex-7--transition;
-
-  &.is-loading {
-    background: global.$color-primary-400;
-  }
-}
-
-.transition-container,
-.webgl {
-  position: fixed;
-  top: 0;
-  left: 0;
-  outline: none;
-  @include global.size(100%);
-
-  pointer-events: none;
-
-  &.experience {
-    pointer-events: all;
-  }
-
-  &.transition {
-    z-index: global.$zIndex-7--transition;
   }
 }
 
