@@ -9,12 +9,21 @@ import { useTheme } from "next-themes";
 const GlobalFooter = (props) => {
   const footerData = useStore(({ footerData }) => footerData);
   const { pagesTitle } = footerData || props;
+  const { fbData } = props;
   const { theme, setTheme } = useTheme();
+  const [fb, setFB] = useState(null);
 
   const handleClick = () => {
     if (theme === "system") setTheme("light");
     if (theme === "light") setTheme("system");
   };
+  useEffect(() => {
+    console.log(fbData);
+    fbData?.then((res) => {
+      console.log(res);
+      setFB(res);
+    });
+  }, [fbData]);
   return (
     <footer
       id={pagesTitle}
@@ -31,6 +40,7 @@ const GlobalFooter = (props) => {
           classes={styles.button}
         ></Button>
         <span className={styles.rule}> | </span>
+        <span> {fb?.name}</span>
         <span>
           {process.env.NEXT_PUBLIC_SITE_NAME} &copy; {new Date().getFullYear()}
         </span>

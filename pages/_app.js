@@ -9,10 +9,12 @@ import { useStore } from "@lib/store";
 import Lenis from "@studio-freight/lenis";
 import { useFrame } from "@studio-freight/hamo";
 import { ThemeProvider } from "next-themes";
+import { firebaseApp, database, refDB, getDB } from "../firebase/config";
 export default function App({ Component, pageProps }) {
   // const [isTouch, setIsTouch] = useState(false);
   const isTouch = useStore(({ isTouch }) => isTouch);
   const setIsTouch = useStore((state) => state.setIsTouch);
+  const [fbData, setFbData] = useState(null);
   const [lenis, setLenis] = useStore((state) => [state.lenis, state.setLenis]);
   useEffect(() => {
     const lenis = new Lenis({
@@ -49,15 +51,9 @@ export default function App({ Component, pageProps }) {
   }, [isTouch]);
 
   useEffect(() => {
-    // const localTheme = localStorage.getItem("user-theme");
-    // console.log("localTheme", localTheme);
-    // if (localTheme === `"light"`) {
-    //   document.documentElement.setAttribute("user-theme", "light");
-    // } else {
-    //   document.documentElement.setAttribute("user-theme", "dark");
-    //   localStorage.setItem("user-theme", JSON.stringify("dark"));
-    // }
-  });
+    const dataFB = getDB();
+    setFbData(dataFB);
+  }, []);
 
   useEffect(() => {
     setIsTouch(mobileDetect());
@@ -93,8 +89,8 @@ export default function App({ Component, pageProps }) {
         }
       `}</style>
       <GlobalNavigation classes="js-site js-site--mobile" />
-      <Component {...pageProps} fonts={{ ibmPlexMono, ibmPlexSans }} />
-      <GlobalFooter classes="js-site js-site--mobile" />
+      <Component {...pageProps} />
+      <GlobalFooter classes="js-site js-site--mobile" fbData={fbData} />
     </ThemeProvider>
   );
 }

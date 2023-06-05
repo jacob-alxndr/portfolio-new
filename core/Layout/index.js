@@ -17,6 +17,7 @@ export default function Layout({
   siteSeo,
   context,
   preview,
+  fbData,
 }) {
   const router = useRouter();
 
@@ -74,6 +75,19 @@ export default function Layout({
   // // console.log("Children", children);
   // console.groupEnd();
 
+  useEffect(() => {
+    // setFbData(fbData);
+    console.log("FIREBASE", fbData);
+
+    // const localTheme = localStorage.getItem("user-theme");
+    // console.log("localTheme", localTheme);
+    // if (localTheme === `"light"`) {
+    //   document.documentElement.setAttribute("user-theme", "light");
+    // } else {
+    //   document.documentElement.setAttribute("user-theme", "dark");
+    //   localStorage.setItem("user-theme", JSON.stringify("dark"));
+    // }
+  }, []);
   return (
     <>
       <Head>
