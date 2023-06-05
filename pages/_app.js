@@ -14,7 +14,6 @@ export default function App({ Component, pageProps }) {
   const isTouch = useStore(({ isTouch }) => isTouch);
   const setIsTouch = useStore((state) => state.setIsTouch);
   const [lenis, setLenis] = useStore((state) => [state.lenis, state.setLenis]);
-
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.8,
@@ -79,16 +78,22 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
           href="https://use.typekit.net/fqk8hnt.css"
         ></link> */}
-        <style>{`
+        {/* <style>{`
           :root {
             --font-primary: ${ibmPlexSans.style.fontFamily};
             --font-secondary: ${ibmPlexMono.style.fontFamily};
 
           }
-        `}</style>
+        `}</style> */}
       </Head>
+      <style jsx global>{`
+        :root {
+          --font-primary: ${ibmPlexSans.style.fontFamily};
+          --font-secondary: ${ibmPlexMono.style.fontFamily};
+        }
+      `}</style>
       <GlobalNavigation classes="js-site js-site--mobile" />
-      <Component {...pageProps} />
+      <Component {...pageProps} fonts={{ ibmPlexMono, ibmPlexSans }} />
       <GlobalFooter classes="js-site js-site--mobile" />
     </ThemeProvider>
   );
