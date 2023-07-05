@@ -19,8 +19,6 @@
   .title,
   .description {
     text-align: left;
-    // gsap
-    opacity: 0;
   }
   .title {
     font-weight: 700;
@@ -42,7 +40,11 @@
     margin-top: global.rem(24);
     gap: global.rem(16) global.rem(24);
     width: 100%;
-    // gsap
-    opacity: 0;
   }
+}
+// gsap
+.title,
+.description,
+.links {
+  opacity: 0;
 }
