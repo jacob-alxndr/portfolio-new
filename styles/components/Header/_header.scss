@@ -19,9 +19,10 @@
   .title,
   .description {
     text-align: left;
+    // gsap
+    opacity: 0;
   }
   .title {
-    // opacity: 0;
     font-weight: 700;
     color: global.$color-white;
   }
@@ -41,5 +42,7 @@
     margin-top: global.rem(24);
     gap: global.rem(16) global.rem(24);
     width: 100%;
+    // gsap
+    opacity: 0;
   }
 }
