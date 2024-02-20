@@ -13,6 +13,7 @@ const Layout = (props) => {
   const [mobile, setMobile] = useState(false);
   const [windowSize, setWindowSize] = useState(false);
   const elementRef = useRef(null);
+  const descRef = useRef(null);
   const listRef = useRef();
   const tl = gsap.timeline();
   const { title, description, bio, titleSize, experience, links } = data;
@@ -42,16 +43,19 @@ const Layout = (props) => {
     const throttled = throttle(handleResize, 100);
     window.addEventListener("resize", throttled, { passive: true });
 
-    return () =>
-      window.removeEventListener("resize", throttled, { passive: true });
+    return () => window.removeEventListener("resize", throttled, { passive: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const elements = elementRef.current.children;
+    // const descEls = descRef.current.children;
     let ctx = gsap.context(() => {
+      tl.addLabel("start");
       tl.set(elements, { autoAlpha: 0, y: 10 });
-      tl.to(elements, { autoAlpha: 1, y: 0, stagger: 0.2 });
+      // tl.set(descEls, { autoAlpha: 0, y: 10 });
+      tl.to(elements, { delay: 1, autoAlpha: 1, y: 0, stagger: 0.3 }, "start");
+      // tl.to(descEls, { delay: 1, autoAlpha: 1, y: 0, stagger: 0.3 }, "start");
     });
     return () => ctx.revert(); // <- cleanup!
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,13 +63,10 @@ const Layout = (props) => {
 
   return (
     <div className={classNames(styles.container, "padding-x-lg")}>
-      <Header
-        props={{ title, links, description, titleSize, listRef, mobile }}
-        ref={elementRef}
-      />
+      <Header props={{ title, links, description, titleSize, listRef, mobile }} ref={elementRef} />
       <div className={styles.column}>
         {bio && (
-          <div className={styles.description}>
+          <div ref={descRef} className={styles.description}>
             <Markdown>{bio}</Markdown>
           </div>
         )}

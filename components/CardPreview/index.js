@@ -31,9 +31,7 @@ export default function CardPreview({ data }) {
           </div>
 
           <div className={styles.content}>
-            {data?.eyebrow && (
-              <span className={styles.eyebrow}>{data?.eyebrow}</span>
-            )}
+            {data?.eyebrow && <span className={styles.eyebrow}>{data?.eyebrow}</span>}
             <h3 className={styles.title}>{data?.title}</h3>
             <span className={styles.subtitle}>{data?.subtitle}</span>
             <div className={styles.description}>

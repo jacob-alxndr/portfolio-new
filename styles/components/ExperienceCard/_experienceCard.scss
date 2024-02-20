@@ -1,20 +1,28 @@
 @use "/styles/shared/global";
 
 .card {
-  overflow: hidden;
+  // overflow: hidden;
   transition: background-color 0.3s global.$easing;
   border-radius: map_get(global.$border-radius, "xxxs");
+
+  &:has(img) {
+    border: 1px solid global.$color-primary-500;
+  }
+
   .image {
     position: relative;
-    max-width: global.rem(320);
+    // max-width: global.rem(320);
     border-radius: map_get(global.$border-radius, "xxxs");
     margin: global.rem(16) global.rem(16) global.rem(0);
     overflow: hidden;
+    // border: 2px solid #f9f9f9;
+    transition: transform 0.5s ease;
+
     div img {
-      transition: transform 1s ease !important;
+      transition: transform 0.5s ease !important;
     }
     div picture img {
-      transition: opacity 0.5s global.$easing, transform 1s global.$easing !important ;
+      transition: opacity 0.5s global.$easing, transform 0.5s global.$easing !important ;
     }
 
     @include global.mq("tablet-medium") {
@@ -53,8 +61,8 @@
 
   body:not(:global(.is-touch)) & {
     &.hasLink:hover {
-      cursor: pointer;
-      background-color: global.$color-primary-700;
+      // cursor: pointer;
+      // background-color: global.$color-primary-700;
       .image img {
         transform: scale(1.05);
       }

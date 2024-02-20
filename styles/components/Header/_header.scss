@@ -23,6 +23,8 @@
   .title {
     font-weight: 700;
     color: global.$color-white;
+    // gsap
+    opacity: 0;
   }
 
   .description {
@@ -30,16 +32,21 @@
     p {
       @include global.fontSize(18, 24);
       color: global.$color-white;
+      opacity: 0.75;
       font-weight: 100;
       margin: 0;
     }
+    // gsap
+    opacity: 0;
   }
   .links {
     display: flex;
     flex-wrap: wrap;
-    margin-top: global.rem(24);
+    margin-top: global.rem(40);
     gap: global.rem(16) global.rem(24);
     width: 100%;
+    // gsap
+    opacity: 0;
   }
 }
 // gsap
