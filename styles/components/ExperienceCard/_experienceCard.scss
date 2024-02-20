@@ -6,7 +6,7 @@
   border-radius: map_get(global.$border-radius, "xxxs");
 
   &:has(img) {
-    border: 1px solid global.$color-primary-500;
+    // border: 1px solid global.$color-primary-500;
   }
 
   .image {
