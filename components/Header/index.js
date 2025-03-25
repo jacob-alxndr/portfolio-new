@@ -23,13 +23,13 @@ export default forwardRef(function Header({ props }, ref) {
               //   attr={{ ["data-text"]: link?.buttonText }}
               onClick={() => {
                 if (link.buttonUrl.includes("#")) {
-                  sendGTMEvent({ event: "buttonClicked", value: link.buttonText });
                   const list = listRef.current.children;
                   lenis.scrollTo(list[i], {
                     offset: mobile ? -45 : -90,
                     lerp: 0.1,
                     lock: true,
                   });
+                  return sendGTMEvent({ event: "buttonClicked", value: link.buttonText });
                 } else return;
               }}
               // All default style links should not have animation or special styling
