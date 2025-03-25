@@ -9,6 +9,8 @@ import { useStore } from "@lib/store";
 import Lenis from "@studio-freight/lenis";
 import { useFrame } from "@studio-freight/hamo";
 import { ThemeProvider } from "next-themes";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 export default function App({ Component, pageProps }) {
   // const [isTouch, setIsTouch] = useState(false);
   const isTouch = useStore(({ isTouch }) => isTouch);
@@ -66,10 +68,7 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider>
       <Head>
         <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        ></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <link rel="preconnect" href={`//graphql.datocms.com`}></link>
         <link rel="dns-preconnect" href="https://datocms-assets.com"></link>
         <link rel="dns-prefetch" href="https://datocms-assets.com"></link>
@@ -95,6 +94,7 @@ export default function App({ Component, pageProps }) {
       <GlobalNavigation classes="js-site js-site--mobile" />
       <Component {...pageProps} fonts={{ ibmPlexMono, ibmPlexSans }} />
       <GlobalFooter classes="js-site js-site--mobile" />
+      <GoogleAnalytics gaId="G-4RPNVMWTKX" />
     </ThemeProvider>
   );
 }
