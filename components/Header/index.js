@@ -22,6 +22,7 @@ export default forwardRef(function Header({ props }, ref) {
               data={link}
               //   attr={{ ["data-text"]: link?.buttonText }}
               onClick={() => {
+                sendGTMEvent({ event: "buttonClicked", value: link.buttonText });
                 if (link.buttonUrl.includes("#")) {
                   const list = listRef.current.children;
                   lenis.scrollTo(list[i], {
@@ -29,8 +30,7 @@ export default forwardRef(function Header({ props }, ref) {
                     lerp: 0.1,
                     lock: true,
                   });
-                  sendGTMEvent({ event: "buttonClicked", value: link.buttonText });
-                } else return;
+                } else null;
               }}
               // All default style links should not have animation or special styling
               {...(link?.buttonStyle === "default" && {
