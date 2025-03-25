@@ -20,9 +20,7 @@ export default function Layout({
 }) {
   const router = useRouter();
 
-  const pageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${
-    router.asPath.split("?")[0]
-  }`;
+  const pageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath.split("?")[0]}`;
 
   const navigationData = useStore(({ navigationData }) => navigationData);
   const setNavigationData = useStore((state) => state.setNavigationData);
@@ -83,10 +81,7 @@ export default function Layout({
           content="I'm a Front-end Developer and Designer. I'm a creative thinker who builds responsive and dynamic digital experiences for the web."
           key="desc"
         />
-        <meta
-          property="og:title"
-          content="Jacob Martinez - Front-end Developer & Designer"
-        />
+        <meta property="og:title" content="Jacob Martinez - Front-end Developer & Designer" />
         <meta
           property="og:description"
           content="I'm a Front-end Developer and Designer. I'm a creative thinker who builds responsive and dynamic digital experiences for the web."

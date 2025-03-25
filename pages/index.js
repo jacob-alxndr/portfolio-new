@@ -41,7 +41,7 @@ export default function Home({ subscription, preview }) {
         navigationData={globalNavigation}
         footerData={globalFooter}
         data={[layout, ...bodyComponents]}
-      />
+      ></Layout>
     </div>
   );
 }

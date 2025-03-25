@@ -10,9 +10,7 @@ export default forwardRef(function Header({ props }, ref) {
   return (
     <div className={classNames(styles.header)}>
       <div className={styles.content} ref={ref}>
-        <div className={classNames(styles.title, `u-heading--${titleSize}`)}>
-          {title}
-        </div>
+        <div className={classNames(styles.title, `u-heading--${titleSize}`)}>{title}</div>
         <div className={styles.description}>
           <StructuredText data={description} />
         </div>
