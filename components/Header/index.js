@@ -29,7 +29,7 @@ export default forwardRef(function Header({ props }, ref) {
                     lerp: 0.1,
                     lock: true,
                   });
-                  return sendGTMEvent({ event: "buttonClicked", value: link.buttonText });
+                  sendGTMEvent({ event: "buttonClicked", value: link.buttonText });
                 } else return;
               }}
               // All default style links should not have animation or special styling
