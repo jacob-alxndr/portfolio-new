@@ -4,7 +4,7 @@ import { StructuredText } from "react-datocms";
 import Button from "@components/Utilities/Button";
 import React, { forwardRef } from "react";
 import { useStore } from "@lib/store";
-import { sendGTMEvent } from "@next/third-parties/google";
+import { sendGTMEvent, sendGAEvent } from "@next/third-parties/google";
 export default forwardRef(function Header({ props }, ref) {
   const lenis = useStore(({ lenis }) => lenis);
   const { title, links, description, titleSize, listRef, mobile } = props;
@@ -22,7 +22,8 @@ export default forwardRef(function Header({ props }, ref) {
               data={link}
               //   attr={{ ["data-text"]: link?.buttonText }}
               onClick={() => {
-                sendGTMEvent({ event: "buttonClicked", value: link.buttonText });
+                // sendGTMEvent({ event: "buttonClicked", value: link.buttonText });
+                sendGAEvent("event", "buttonClicked", { value: link.buttonText });
                 if (link.buttonUrl.includes("#")) {
                   const list = listRef.current.children;
                   lenis.scrollTo(list[i], {
